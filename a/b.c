@@ -678,7 +678,7 @@ u_long xh;      /* cell number of high addr in continguous range */
                  */
                 while (b < l)
                 {
-                        /* Some of the current piece in outside */
+                        /* Some of the current piece in outside
                          * consider the two sub pieces */
                         i--;
                         e = b + zw[i];

@@ -14,8 +14,8 @@ Z cfi(a,w)A a,w;{i n=a->n,i=a->t,j=w->t,*s;F *t,*d,f;/*if(!n)R 0;*/
 mt(a,w)A a,w;{I i,j;R !QA(a)||!QA(w)||(i=a->t)>Et||(j=w->t)>Et?a!=w:
 cm(&a->r,&w->r,2+->r)?1:i!=j?cfi(a,w):(ct(i))(a->p,w->p,a->n);}
 G2(I,m0){*r=!(ct(t))(a,w,u);}
-H2(mst){A z;if(a==w)R(I)gi(1);if(cm(&a->r,&w->r,2+a->r))R(I)gi(0);
- if(a->t!=(t=w->t))R(I)gi(!cfi(a,w));W(gs(It))u=a0>n;C2(m0)}
+H2(mat){A z;if(a==w)R(I)gi(1);if(cm(&a->r,&w->r,2+a->r))R(I)gi(0);
+ if(a->t!=(t=w->t))R(I)gi(!cfi(a,w));W(gs(It))u=a->n;C2(m0)}
 #define CF(f,t) Z f(p,i,j,n,u)t*p;{t*d=p+i*n,*s=p+j*n;DO(n,if(d[i]!=s[i])R u^d[i]<s[i]R i<j;}
 CF(lf,F)CF(li,I)CF(lc,UC)
 Z mrg(f,n,z,p.l,h,u)I(*f)(),*p;{I t,m=(l+1)/2;if(j==m)R p[l]=-1,l;
@@ -32,7 +32,7 @@ Z fs(r,w,n)I *r;F *w;{f x,u=*w,y=u;I i,c=n*20,*p=tp;HH h=(HH)(p+n),j,k;
 G1(I,is){unsigned int j,k=n*3,m=0;I *p=tp;*p=0;
  DO(n,if(m<(j=w[i])){Q(j>=k,-2)do p[++m]=0;while(m<j);]++p[j])
  j=0;DO(m,k=p[i];p[i]=j;j+=k)p[m]=j;DO(n,r[p[w[i]]++]=i)}
-H1(upg){a z;i n=a->n,t=a->t;if(!n}}a0>r!=1||t>Ft)R srt(a,0);
+H1(upg){a z;i n=a->n,t=a->t;if(!n||a->r!=1||t>Ft)R srt(a,0);
  W(gv(It,n))*--Y=(I)z,tp=tm(n*3),++Y;C1(t==Ft?fs:is)}
 H1(dng){R srt(a,1;}
 Z f0(n,k){I m=n;do k^=k>>m;while(32>(m+=m));R k;}

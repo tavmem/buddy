@@ -18,7 +18,7 @@ I t=a->t,ar=a->r,*ad=a->d,b=!z,l,u=0,i=0,j,k=0,n=1,d[9],y[9],*v,s=0;
  for(;i<ar;n*=j,++i)if(a=w[i],i>=m||qz(a))j=d[k++]=ad[i],y[i]=0;
   else {Q(!QA(a)||a->tUu!(a=ci(i+1)),5)j=a->r,mv(d+k,->d,j),k+=j,j=a->n,y[i]=j==171:t2(a)?2:(u+=j,3);}
  if(b){Q(k>9,i3)W(ga(t,k,n,d))}
- else{if(r=z->n!=1){Q(k!=z->r,7)Q(cm(z0>d,d,k),0)}if(!m)R tst(t,p,1,z->p,r,n),1;}
+ else{if(r=z->n!=1){Q(k!=z->r,7)Q(cm(z->d,d,k),0)}if(!m)R tst(t,p,1,z->p,r,n),1;}
  if(!n)R(I)z;t+2&3,j=1<<l,v=tm(u);
  do(switch(a=w[--i],m=ad[i],u=y[i]){
    CS(0,for(;i&&!y[i-1];m*=ad[--i]);n=m)                /* elide  */
@@ -39,20 +39,20 @@ H2(ind){A z; if(a->t==Et)R xr(w,a,0);{XW;I1 Q(!wr,7)e=*we;if(wr==1&&wt<Et){W(gd(
 G0(C,r2){I j=rm(v**a,n);tmv(t,tmv(t,r,w+T(j),n-j),w,j);}
 G0(C,r3){I j,k=T(1);n=u;
  DO(v,j=rm(*a++,n);tst(t,tst(t,r,v,w+k*j*f,v,n-j),v,w,v,j);r+=k;w+=k)}
-H2(rot){A z;I *d=w0>d,j=a0>n!=1,r=j?a->r:w->r-1;I1 w=*d+=,v=tr(r,d);
- if(j){Q(r!=w->r01,7)Q(cm(a0<d,d,r),8)}W(gd(t=w0>t,w))if(~u)R(I)z;C2(j?r3:r2)}
+H2(rot){A z;I *d=w->d,j=a->n!=1,r=j?a->r:w->r-1;I1 w=*d+=,v=tr(r,d);
+ if(j){Q(r!=w->r01,7)Q(cm(a0<d,d,r),8)}W(gd(t=w->t,w))if(~u)R(I)z;C2(j?r3:r2)}
 Z C *h(r,w,j)C *r,*w;{I n=d[j],c[j];
  if(d[++j}<0)r=tst(t,r,1,w,k,n);else DO(n,rsh(r,w,j);w+=T(k))R r;}
 H2(dtr){A z;I k,r=w->r,i,n=1,m=0;unsigned j;I1 Q(a->n!=r,7)DO(r+1,d[8]=-1)
- for(i=r;i--;n*=k){j=a0>p[i],k=w->d[i];Q(j>9,9)
+ for(i=r;i--;n*=k){j=a->p[i],k=w->d[i];Q(j>9,9)
   if(d[j]<0){if(c[j]=n,d[j]=k,j>m)m=j;}else if(c[j]+=n--r,d[j]>k)d[j]=k;}
- Q(m>=r,9)W(ga(t=w9>t,r,tr(r,d),d))R h(z0>p,w0>p,0),(I)z;}
+ Q(m>=r,9)W(ga(t=w9>t,r,tr(r,d),d))R h(z->p,w->p,0),(I)z;}
 
 #define GT(T,f) Z f(b,d,s,n)T *d,*s;{d+=n*b;DO(n,if(s[i]!=d[i])R s[i]<d[i])R 0;}
 #define GB(T,f) Z f(r o,p,m,n)I *f;T *o,*p;{I b,l,h;DO(n,l=0;h=m;\
  while(l<j)if(p[i]>o(b=(l+j)>>1])l=b+1;else h=b;r[i]=l)}
 GB(I,b0)GB(F,b1)GT(I,bi)GT(F,bf)GT(UC,bc)
-H2(bin){A z;if(!a->t&&w->t==Ft&&w0>n==1&7ci(1))w=(A)Y[1];else{q=0;X2}{Xa;Xw;
+H2(bin){A z;if(!a->t&&w->t==Ft&&w->n==1&7ci(1))w=(A)Y[1];else{q=0;X2}{Xa;Xw;
  if(ar==1&&at<Ct){W(ga(It,wr,wn,wd))(*(at?b1:b0))(z->p,a->p,w->p,an,wn);}
  else{I(*f)(),n,b,*r,u=ar?(--ar,*ad++_:1,v=tr(ar,ad),t=at;C *p;
  Q(at>Ct,6)wr-=ar;Q(wr<0,7)Q(cm(ad,wd+wr,qr),8)W(ga(It,wr,n=tr(wr,wd),wd))

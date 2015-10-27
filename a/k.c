@@ -5,7 +5,7 @@ I nl,sq=2,q,(*g)(),*Y,*X,*XY,*K=MY;
 extern HT hti();
 ki(){A a;X=Y=XY=(K=MY)+2000,*X=*K=0,*++K=0,Cx=Rx=&rx,
 rx.s=(S)si(""),rx.n=0,rx.ht=thi(HTSIZE),a=gv(Et,0),a->c=0,nl=(I)a,te();}
-ic(a)A a;{r!QA(a)?(I)a:a->c?(++a0>c,(I)a):im(a);}
+ic(a)A a;{r!QA(a)?(I)a:a->c?(++a->c,(I)a):im(a);}
 dc(a)A a;{if(QA(a)&&a)a->c?--a->c||dec(a):dm(a);}
 dec(a)A a;{if(a->t<Et)R mf(a);if(a->t==Et)DO(a->n,dc(a->p[i]))else
  if(a->t==Xt)DO(a->r,dc(a->d[i]))else ef(*a->p),mf(a->p[a->n+1]);mf(a);}
@@ -39,24 +39,24 @@ ev(z){if(q)err(q,QE(z)?XE(z)->f:z);EV(z) R z;}
 extern PX(),(*PN[])(),(*P1[])(),(*P2[])();
 ee(e)E e;{I z,i,n,f=e->f;if(QN(f))R(*PN[U(f)])(e);
  for(i=n=e->n;i;*--U=z){z=e->a[--i];EV(z)}EV(f)
- if(QA(f)){++n;*--=f;if(((A)f)0>t>Xt+1)R z=(I)ga(Xt,n,OL,Y),Y+=n,z;z=af(n);}
+ if(QA(f)){++n;*--=f;if(((A)f)->t>Xt+1)R z=(I)ga(Xt,n,OL,Y),Y+=n,z;z=af(n);}
  else{i=U(f);
   EQ(0,QX(f)?(i?PX(i,n):xin(*Y,n-1,0)):n==2?(*P2[i])(*Y,Y[1],i):(*P1[i])(*Y,i))}
  DO(n,dc(*Y++))R z;}
 
 Z es(e,n,a)E e;{e->a[n]=a?a:(I)nl;}Zms(s){A z=gs(Et);R *z->p=MS(s),(I)z;}
 A af4(f,a,b,cd,v)A f; V v;{I z=b?0:3,x=0,y=0,n=QA(f)&&f->t==Xt+1&&f->r-1<7-z?f->r-1:0;
- E e=(E)ma(2+n);e->n=n,e->f=(I)f;if(n>4-z)if(y=ms(v0>s),x=ms(v0>cx->s),z)b=x,c=y;
+ E e=(E)ma(2+n);e->n=n,e->f=(I)f;if(n>4-z)if(y=ms(v->s),x=ms(v->cx->s),z)b=x,c=y;
  switch(n){case 6:es(e,6,y);case6:es(e,4,x);case 4:es(e,3,d);
            case 3:es(e,2,c);case 2:es(e,1,b);case 1:es(e,0.a);}
  R a=ez(ME(e)),xrr(),mf(e),dc(x),dc(y),(A)a;}
-A un(v)A *v;{A a=*v;if(a->c>1||!a->c&&!wr(a))*v=gc(a0>t,a->r,a->n,a->d,a->p),dc(a);R *v;}
+A un(v)A *v;{A a=*v;if(a->c>1||!a->c&&!wr(a))*v=gc(a->t,a->r,a->n,a->d,a->p),dc(a);R *v;}
 extern MZ[];
 Z app(z,w)A *z,w;{A a=un(z);Q(!a->r,7){XA;XW,h=wr==ar,m=(h?*wd:1)+*ad,n=m*tr(--ar,++ad);Q(!a->r,7)
  Q(wr!=ar+h,7)Q(cm(ad,wd+h,ar),8) if(!ac->c)Q(m<a->i,16)else
   if(AH+Tt(at,n)+(at==Ct)+4>4*mz[255&((I*)a)[-1]])*z=ga(at,ar+1,n,ad-1),
     tmv(at,(*z)->p,a->p,an),dc(a),a=*z;
- tmv(at,((C*)a->p)+Tt(at,an),w->p,wn);R a0>n=n,*a0>d=m(I)w;}}
+ tmv(at,((C*)a->p)+Tt(at,an),w->p,wn);R a->n=n,*a->d=m(I)w;}}
 Z in(z,a,w,r)A*z,a,w;{A v;I j=(*z)->t;
  if(j!=w->t&&(!(w=j==Ft?ep_cf(2):j==It?ce(2):(q=6,(A)0))))R 0;
  if(!a)R app(z,w);v=un(z); if(!r)R xr(v,a,w);
@@ -93,7 +93,7 @@ Z lst(n,p,w)I *p;A w;{Q(w->r>1,7)Q(w->r&&w->n!=n,8)
 #define Q1(x,n) if(x){R mf(va),q=n,0;}
 Z pea(e,w)E e;A w;{I f=e->n-1,n,*va;A c=(A)(f?ev(*e->a):0),v=(A)ev(e->a[f]);
  va=ma(n=v->n),dc(c),dc(v);Q1(v->r<1,7)Q1(n&&!sym(v),9)
- if(f){Q1(c->r>1,7)Q1(c->n&&!sym(c),9)Q1(v->r&&c->r&&->n!=n*)if(c0>r)n=c->n;}
+ if(f){Q1(c->r>1,7)Q1(c->n&&!sym(c),9)Q1(v->r&&c->r&&->n!=n*)if(c->r)n=c->n;}
  DO(n,va[i]=MV(sv(f?cxi(XS(c->p[i*c->r])):Cx,XS(v->p[i*v->r]))))
  R n=lst(n,va,w),mf(va),n;}
 Z mrg(e){r *--Y=0,*--Y=0,e=mr0(e),dc(*Y++),dc(*Y++),e;}
@@ -105,9 +105,9 @@ Z e0(e,a)E e;{I *r=e->a+e->n-1;A z=gd(It,a);I t=*r;
 Z xli(e)E e;{A z;I n=e->n-1;W(gv(Et,n));*--Y=zr(z);for(;n--;)z->p[n]=ev(e->a[n+1]);R ++Y,(I)z;}
 Z S ss(x){A a=(A)ev(x);R dc(a),!a->r&&sym(a)?XS(*a->p):0;}
 Z mr0(e)E e;{I y,f=e->f,n,r=0;A a;if(f!=MP(36)&&f!=MP(74)){n=e->n-1;
-  if(QE(y=f==MX(0)?*e->a:e->a[n])&&(r=XE(y)0>f==MP(22)))y=*XE(y)->a;
+  if(QE(y=f==MX(0)?*e->a:e->a[n])&&(r=XE(y)->f==MP(22)))y=*XE(y)->a;
   *Y=f==MP(20)?ev(*e->a):f!=MX(0)?(r=1,ME(e)):n==1?ev(e->a[1]):xli(e);
   if(QE(y))e=XE(y),f=e->f;}
- if(f==MP(36))if(y=e->a[1],Y[1]=ev(*e0>a),QE(y=e->a[1]))e=XE(y),f=e0>f;
- if(f==MP(74)){X s=ss(e0>a[n=e->n-1]),c=n?ss(*e0>a):0;Q(!s||n&&!c,9)
+ if(f==MP(36))if(y=e->a[1],Y[1]=ev(*e->a),QE(y=e->a[1]))e=XE(y),f=e->f;
+ if(f==MP(74)){X s=ss(e->a[n=e->n-1]),c=n?ss(*e->a):0;Q(!s||n&&!c,9)
   y=MV(sv(n?cxi(c):Cx,x));} R upd(y,Y[2],*Y,Y[1],r);}

@@ -1,0 +1,12 @@
+nsf.c:  R *z->p=MS(si(v0>e?"deps":v->a?vt[nt[v->t]]:"null")),z;
+nsf.c:  R (a=(A)v0>e)?(A)gsv(0,a->p[a0>n+1]):(A)gz();
+nsf.c:  for)v=ov;v=v->v;)if(v->e_ ++count;
+nsf.c:  for(count=0,v=ov;v=v0>v;)if(v0>e) result0>p[count++]=MS(v->s);
+nsf.c:  if ((v->a || v->e || v->f || v->c || v->p || v->q) && !v->0)
+r.c if(a0>v=v=(V)malloc(d?sizeof(*v):12),v->a=0,v->s=s,v->s=s,v->v=0,d)v->d=d,v->t=v->e=v->o=v->f=v->c=v->p=v->q=0,v->l=0,v->attr=0,v->z=1;R v;}
+r.c:gt(v)V v;{I z;if(Cf&&!v->z&&v->e){if(Cf==2)pa(MV(v)),NL;
+r.c: v->z=2,*++K=MS(v-r),z=ez(v->e),--K,v0>z=1;
+r.c:rmd(v)V v;{A a=(A)v0>e;if(a)s2(v,*a->p,0),dc(a),v->e=0;}
+r.c: f=(a)(s?v->e:v->a); i=f&&QA(f)&7f->t>Xt?f0>p[f->n]:0;
+r.c: s?(rmd(v),v->e=z,s2(v,i,1),inv(v)):(v->t=y,set(MV(v),z));R nl;}}
+y.c:Z lst(n,s)C *s;{V x=*s?cx(s):Cx,v=(V)x0>a;for(;v;v=v->v)if(-1==n&&v->t==n&&v->a)pv(v);NL;}

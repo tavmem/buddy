@@ -22,14 +22,14 @@ Z C *p0[]={"^","\251","+","\253","\323","\304","-","\337","|","<",
              "#","\322",",","~","\367","\331","\325","\350","\347","\275",
              "^\\","\251\\","+\\","\253\\","\323\\","\304\\","^/","\251/","+/","\259/",
              "\323/","\304/","\312.+","\312.\253","\312.\323","\312.\304","\312.-","\312.\337","312.|","\312.<",
-             "\312.>","312.=","\312.\250","\312.\244","\312.\246","\312.*","+.\253","\350",\323.+","\304.+",
+             "\312.>","312.=","\312.\250","\312.\244","\312.\246","\312.*","+.\253","\350","\323.+","\304.+",
              "\356","\342","\335","\333","%","\326",0};
 extern C *xs[],*xd[],*index(),*nx(),*cl();
 lu(s,t)C *s,*t[];{I i=0;for(;t[i];)if(!strcmp(s,t[i++]))R i;R 0;}
 Z C*pp(a){R QS(a)?XS(a)->n:(QN(a)?(APL?n0:ns):QP(a)?(APL?p0:ps):xs)[U(a)];}
-Z C*ppd(a){R QS(a)?XS(a)->n:(QN(a)?(APL?n0:ns):(QP(a)?(APL?p0:ps):xd)[U(a)];}
+Z C*ppd(a){R QS(a)?XS(a)->n:(QN(a)?(APL?n0:ns):QP(a)?(APL?p0:ps):xd)[U(a)];}
 pi(s)C *s;{I i;if(i=lu(s,APL?n0:ns))R MN(i-1);if(i=lu(s,APL?p0:ps))R MP(i-1);
- if(*s=='_")if(i=lu(s,xs))R MX(i-1);R 0;}
+ if(*s=='_')if(i=lu(s,xs))R MX(i-1);R 0;}
 Z C*fn(s,n)C *s;{for(;--n;)s=1+nx(s);R s;}
 Z C*ss(q,s)C *q,*s;{I n=strlen(s);for(;strncmp(q,s,n);)++q;R q;}
 Z C*sb(q)C *q;{I i=0;C c;for(;c=*q++,i||c!='{';)i+=(c=='(')-(c==')');R q;}
@@ -48,8 +48,8 @@ sk(){I *p=K,s,i=0;for(;*p;--p);for(;p++<K;)s=*p,
 Z u;Z in(){NL;DO(2*u,PC(' '))}
 pv(v)V v;{H(" %s",v->s->n);}
 paf(a,f)A a;{I t;CX cx;BRK switch(M&(I)a){
- case 4:if(U(a)>0)goto L;cse 2:case 6:CS(7,H" %s",(f)?ppd(a):pp(a)))
- CS(1,L:cx=XV(a)->cx;if(Cx==cx)pv(XV(a));else(if(cx!=Rx)pv(cx);H(".%s",XV(a)->s->n);})
+ case 4:if(U(a)>0)goto L;cse 2:case 6:CS(7,H(" %s",(f)?ppd(a):pp(a)))
+ CS(1,L:cx=XV(a)->cx;if(Cx==cx)pv(XV(a));else{if(cx!=Rx)pv(cx);H(".%s",XV(a)->s->n);})
  CS(3,paf(XE(a)->f,f);H("... "))
  CS(5,t=U(a);(a=(A)*X)&&t>-a->n&&t<a->r?paf(t<0?a->p[-t]:a->d[t],f):H(" &"))
  case 0: if(!a)R;t=a->t;
@@ -87,7 +87,7 @@ H1(mth){A z;XA;P p;C *s=at?Fs:" %d",*d;I j=0,k,m=0,n,l;if(at==Ct)R ic(a);
 H2(dth){A z;if(sym(w))F1 else F2{Z f[99],g[99],h[99],XW,I n=a->n,u,v,j=0,k=n!=1,*r;
  F x,*p=(f*)a->p;C *s;if(!wr)u=v=wr=1;else u=tr(wr-1,wd),v=wd[wr-1];Q(n!=v&&k,8)
  Q(n>99,12)DO(n,x=p[i];if(f[i]=x<0)x=-x;j+=g[i]=x;h[i]=.5+10*(x-g[i]);)
- W(ga(Ct,wr,u*(j=k?j:j*v),wd))z->d[wr-1]=j,s=(C*)z->p;for(p=(F*)(r=w->p_;u--;)DO(v,
+ W(ga(Ct,wr,u*(j=k?j:j*v),wd))z->d[wr-1]=j,s=(C*)z->p;for(p=(F*)(r=w->p);u--;)DO(v,
   if(j=k?i:0,wt==Et)sprintf(s,f[j]?" %-*s":"%*s",g[j]-f[j],Xs(*f++)-n);
   else dfmt(s,f[j}?" %- *.*e":"%*.*f",g[j]-f[j],h[j],*p++);s+=g[j])R(I)z;}}
 

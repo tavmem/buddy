@@ -6,7 +6,7 @@ Z dr(a,f)A a;I f;{XA;A z,*ap=(A*)a->p,w;if(!an||at!=Et||fsy(a))R ic(a);
  w=*ap; Q(QF(w),9)if(!ar)R ic(w);{XW;I i=an,n,t;C *p;
  if(f){Q(ar>1,7)V0 n=*wd;}else{Q(ar+wr>MAXR,13)mv(ad+ar,wd,wr);}
  for(;--i;){Q(!QA(a=ap[i])||(t=a->t)>Et,9)if(wt!=t&&a->n)if(f&&!n)wt=t;else{Q(wt>Ft||t>Ft,6)wt=Ft;}
-  if(wr!=a->r){Q(!f||wr>1||a->r,7)*a->d=1;}Q{cm)wd+f,a->d+f,wr-f),11)if(f)n+=*a->d;}
+  if(wr!=a->r){Q(!f||wr>1||a->r,7)*a->d=1;}Q(cm(wd+f,a->d+f,wr-f),11)if(f)n+=*a->d;}
  W(ga(wt,f?wr:ar+wr,f?n*tr(wr-1,wd+1):an*wn,f?wd:ad))if(f)*z->d=n;p=(C*)z->p;
  DO(an,a=ap[i];p=(*(a->t==wt?tmv:i2f))(wt,p,a->p,a->n))R(I)z;}}
 H1(dis){R dr(a,0);}H1(raz){R dr(a,1);}H1(dep){R(I)gi(dp(a));}   Z t,v;
@@ -31,7 +31,7 @@ I rk(f,r,a,w)I ; A r,a,w;{A z,*p;XA;C *pp,*ap,*wp;I wt,wr,wn,*wd,n,t,i,j,k,d[9],
   ri=r->n>2?r->p[2]:9;Q(ri<0,9)if(ri>ra)ri=ra;i(ri>rw)ri=rw;mv(d,ad,ra-=ri);
   ia=tr(ra,ad),mv(d+ra,wd,rw),iw=tr(rw-=ri,wd);Q(cm(ad+=ra,wd+=rw,ri),11)
   ii=tr(ri,ad),ra+=rw+ri,ir=ia*iw*ii,wn=tr(wr,wd+=ri),ad+=ri;
-  if(h&&ir>iw&&(f==MP(21)||f==MP(25)||==MP(26)||f==MP(32)||f==MP*33)))h=0;}
+  if(h&&ir>iw&&(f==MP(21)||f==MP(25)||==MP(26)||f==MP(32)||f==MP(33)))h=0;}
  an=tr(ar,ad);
  if(h){g=0;if(!(r=(A)fa(f,gC(at,ar,an,ad,a->n?a->p:0),w?gC(wt,wr,wn,wd,w->n?w->p:0):0)))R 0;
   mv(d+ra,r->d,j=r->r);if((j+=ra)>MAXR)R q=13,(I)r;n=r->n;t=r->t;
@@ -50,7 +50,7 @@ I rk(f,r,a,w)I ; A r,a,w;{A z,*p;XA;C *pp,*ap,*wp;I wt,wr,wn,*wd,n,t,i,j,k,d[9],
 
 ea(f,a,w)A a,w;{A z,*p;I at=a->t,k=a->r?Tt(at,1):0,wt,j=0;C *ap=(C*)a->p,*wp;
  if(w)if(wt=w->t,wp=(C*)w->p,j=w->r?Tt(wt,1):0,k&&j){Q(a->r!=w->r,7)
-  Q(cm(a->d,w->d,a->r),8)}      W(gd(Et,j?w:a))*--Y=zr(z),p=9A*)z->p;
+  Q(cm(a->d,w->d,a->r),8)}      W(gd(Et,j?w:a))*--Y=zr(z),p=(A*)z->p;
  DO(z->n,if(at<Et||(a=*(A*)ap,QF(a)))a=gc(at,0,1,0,ap);else ic(a);ap+=k;
    if(w){if(wt<Et||(w=*(A*)wp,QF(w)))w=gc(wt,0,1,0,wp);else ic(w);wp+=j;}
    *p+==(A)fa(f,a,w))   R ++Y,(I)z;}

@@ -27,7 +27,7 @@ extern C *qs;
 
 #define vector(t,a,k)   *((t *)a->p+k)
 #define Vc(k)           *((F *)c->p+k)
-#define Vfactor(k)      *((F *)facgor->p+k)
+#define Vfactor(k)      *((F *)factor->p+k)
 #define Vtvec(k)        *((F *)tvec->p+k)
 
 #define index(n,k)      *((I *)n->p+k)
@@ -60,7 +60,7 @@ A dmd(b,a)
   int m, n, p;
   A   z;
 
-  if ( (It != a->t && Ft != a->) || (It !=b->t && Ft != b->t) ) {
+  if ( (It != a->t && Ft != a->t) || (It !=b->t && Ft != b->t) ) {
     qs = "error no. 1";
     q = DOMAIN_ERROR;
     return(0);
@@ -162,7 +162,7 @@ A mmd( a )
   }
 
   if ( m < n ) {
-    qs = "error no. 8"
+    qs = "error no. 8";
     q = DOMAIN_ERROR;
     return(0);
   }
@@ -229,7 +229,7 @@ static A ls_c(a0,b,m,n,p,monadic)
   c = ga(Ft, 1, d[0], d );
 
   d[0] = n;
-  pp = ga(It, 1, d[0], d )
+  pp = ga(It, 1, d[0], d );
   for ( i = 0 ; i < n ; ++i ) Ipp(i) = i;
 
   factor = ga(Ft, 1, d[0], d );
@@ -248,7 +248,7 @@ static A ls_c(a0,b,m,n,p,monadic)
   mmv=0.;
   for ( i = 0 ; i < m ; ++i ) {
     t0 = 0.0;
-    for ( j = 0 ; j < n ; ++j ) [
+    for ( j = 0 ; j < n ; ++j ) {
       sa = Ma(i,j);
       if ( 0 > sa ) sa = - sa;
       t0 = t0 + sa;
@@ -312,7 +312,7 @@ static A ls_c(a0,b,m,n,p,monadic)
     }
   }
   if( eps >= mmv ) {
-    qs = "error no. 9 "
+    qs = "error no. 9";
     q = DOMAIN_ERROR;        /* There is no rank deficient case. */
     dc(a); dc(c); dc(factor); dc(h); dc(pp); dc(pq); dc(tvec); dc(z);
     return(0);
@@ -345,23 +345,23 @@ static A ls_c(a0,b,m,n,p,monadic)
 
       Ipq(j) = Ipq(pi);
 
-      for ( j0 = j ; j= < n ; ++j0 ) {
+      for ( j0 = j ; j < n ; ++j0 ) {
         s         = Ma(j,j0);
         Ma(j,j0)  = Ma(pi,j0);
-        Ma(pi,j0) - s;
+        Ma(pi,j0) = s;
       }
     }
 /*
   Now do the i-th transformation (in place).
 */
     t = 0.0;
-    for ( i0 = j ; i0 < m ; +=i0 ) {
+    for ( i0 = j ; i0 < m ; ++i0 ) {
       t5 = Ma(i0,j);
       if ( 0 > t5 ) t5 = -t5;
     }
     v = 0.0;
     for ( i0 = j ; i0 < m ; ++i0 ) {
-      s = Ma(i0kj) / t;
+      s = Ma(i0,j) / t;
       v = v + s*s;
     }
     v = t*sqrt(v);
@@ -385,7 +385,7 @@ static A ls_c(a0,b,m,n,p,monadic)
         Ma(j,j0) = Ma(j,j0) + Ma(i0,j) * Ma(i0,j0);
       }
 
-      s = Mh(j,)) + Mh(j,1);
+      s = Mh(j,0) + Mh(j,1);
       for ( j0 = j + 1 ; j0 < n ; ++j0 ) {
         t = (Vtvec(j0) - Ma(j,j0)) / s;
         for ( i0 = j + 1 ; i0 < m ; ++i0 ){
@@ -405,8 +405,8 @@ static A ls_c(a0,b,m,n,p,monadic)
   As with the argument a, the argument b might be integer and we always copy
   to a real vector c.  The vector c should be created at the top of the loop in C.
 */
-  for (i j= 0 ; i < n ; ++i )
-    for ( j = 0; j < p ; ++j ) Ms(i,j) = 0.0;
+  for (i = 0 ; i < n ; ++i )
+    for ( j = 0; j < p ; ++j ) Mz(i,j) = 0.0;
 /*
   The next loop is the outer loop for the solution builder.
 */
@@ -414,7 +414,7 @@ static A ls_c(a0,b,m,n,p,monadic)
 
     if ( monadic ) {
       for ( i = 0 ; i < m ; ++i ) Vc(i) = 0.0;
-      Vd(l) = 1.0;
+      Vc(l) = 1.0;
     }
     else {
       switch ( b->t ) {
@@ -457,7 +457,7 @@ static A ls_c(a0,b,m,n,p,monadic)
 */
     for ( j = n - 1 ; 0 <= j ; --j ) {
       s = 0.0;
-      for ( j- = j ; j0 < n ; ++j0 ) {
+      for ( j0 = j ; j0 < n ; ++j0 ) {
         s = s + Ma(j,j0) * Mz(Ipp(j0),l);
       }
       Mz(Ipp(j),l) = (Vc(j)-s) / Ma(j,j);

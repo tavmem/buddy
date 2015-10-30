@@ -43,4 +43,4 @@ extern tmp();
 /* A's error function */
 extern err();
 
-#endif included_a_b_h
+#endif

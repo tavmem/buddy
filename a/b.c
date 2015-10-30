@@ -13,7 +13,7 @@ I *ma(m){R(I*)mab(m<<2);}
 mf(p)I *p;{I i=p[-1];*p=(I)MM[i],MM[i]=p;}
 mb(p,n)I *p;{I i=31,j;for(n-=2,+=p;i--;)if(j=MZ[i],j<=n)n-=j,*p=i,mf(p+1),p+=j;}
 mc(){R 0;}
-I *mz(){Z b[31;I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)Ip)++b[i])R b;}
+I *mz(){Z b[31;I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
 
 #else
 
@@ -39,11 +39,11 @@ extern char *getenv();
 
 /* internal function declarations */
 extern void setparms();
-extern voed populate();
+extern void populate();
 extern void newcell();
 
 /* external data definitions */
-u_long MA[MD+1];
+u_long MZ[MD+1];
 
 /* internal data definitions */
 static u_long *zp;          /* plus part parameter */
@@ -128,7 +128,7 @@ void mi()
         zq[0] = (u_long)(0);
         MZ[0] = (u_long)(0);
         fl[0] = (long *)(0);
-        for (i = 1; i < MD; i++_
+        for (i = 1; i < MD; i++)
         {
                 if (((z = zw[i - 1]) >= (u_long)(0x80000000))
                 || (((u_long)(0xffffffff) - (z = 2 * z)) < (p - zp[i])))
@@ -160,11 +160,11 @@ void mi()
 }
 
 u_long mb(low, w)
-long *low;      /* lowest word address in new chund */
+long *low;      /* lowest word address in new chunk */
 u_long w;       /* number of words to allocate from low base */
 {
         /* we should really check that low and high are multiples of 4 */
-        u_long x1;
+        u_long xl;
         u_long l;
         u_long h;
         u_long xh;
@@ -220,7 +220,7 @@ u_long w;       /* number of words to allocate from low base */
          * value of h at each step is the low value of the range for
          * that step.
          */
-        for (k = 1 - 1; k > j; k==)
+        for (k = 1 - 1; k > j; k--)
         {
                 /* we are guaranteed that the range has positive length
                  * That is because either h == rl[k+1] or
@@ -243,7 +243,7 @@ u_long w;       /* number of words to allocate from low base */
                          * slip in a new range.  If we can't, we have to punt
                          * (which is ok since we haven't done anything yet).
                          */
-                        if (nn == MR)
+                        if (rn == MR)
                         {
                                 /* TK indicate trouble */
                                 return (u_long)(0);
@@ -258,7 +258,7 @@ u_long w;       /* number of words to allocate from low base */
                 }
                 populate(xl, l, h, xh);
         }
-        if (j < 0) || (rl[k] ~= xl))
+        if ((j < 0) || (rl[k] != xl))
         {
                /* The jth range was not affected by this */
                j++;
@@ -292,7 +292,7 @@ u_long w;       /* number of words to allocate from low base */
 char *mab(b)
 u_long b;       /* number of bytes required */
 {
-        return (char *)(ma((b + 3) / 4);
+        return (char *)(ma((b + 3) / 4));
 }
 
 long *ma(w)
@@ -314,7 +314,7 @@ u_long w;       /* number of words required */
          * will usually only go a few levels, usually zero, sometimes
          * 1 and almost never 2.
          */
-        for (z = w >> 1, i = 1; z != 0; z >>= 1; i++);
+        for (z = w >> 1, i = 1; z != 0; z >>= 1, i++);
         /* Instead of doing the following, we assume that the extra size
          * intorduced by the plus parts does not exceed the size of the
          * original buddy system size.  This allows us to check i - 1,
@@ -337,14 +337,14 @@ u_long w;       /* number of words required */
        for(;;)
        {
                 /* sentinels in fl make nexttest alway fail */
-                if ((p = fl[i] != (long *)(0))
+                if ((p = fl[i]) != (long *)(0))
                 {
                         fl[i] = *(long **)(p);
                         return p;
                 }
                 for (j = i + 1; j < root; j++)
                 {
-                        if ((p = fl[j]) !- (long *)(0))
+                        if ((p = fl[j]) != (long *)(0))
                         {
                                 fl[j] = *(long **)(p);
                                 do
@@ -391,7 +391,7 @@ long *p;       /* pointer block being feed */
         return;
 }
 
-u_long(mc()
+u_long mc()
 {
         u_long i;
         u_long j;
@@ -405,8 +405,8 @@ u_long(mc()
         for (i = 0; i < MD - 1; i++)
         {
                 z = zw[i];
-                pp - &fl[i];
-                while (p = *pp) != (long *)(0))
+                pp = &fl[i];
+                while ((p = *pp) != (long *)(0))
                 {
                        hdr = p[-1];
                        if (i < ((hdr >> 16) & 0xff))
@@ -415,7 +415,7 @@ u_long(mc()
                                if (i < ((hdr >> 8) & 0xff)) pb = p + z;
                                else pb = p - z;
                                bhdr = pb[-1];
-                               if ((bhdr >. 24) & 0xff) == 1)
+                               if (((bhdr >> 24) & 0xff) == 1)
                                {
                                       /* the buddy is already marked, so remove this
                                        * guy from the free list now.  We will remove
@@ -474,6 +474,7 @@ u_long(mc()
                 }
                 for (i = MD; (i > 0) && (fl[i] == (long *)(0)); i--);
                 return i;
+        }
 }
 
 u_long *mz()
@@ -486,14 +487,14 @@ u_long *mz()
         {
                 for (p = fl[i], j = 0;
                         p != (long *)(0);
-                        p = *(long **)(p), j++;
+                        p = *(long **)(p), j++);
                 fc[i] = j;
         }
         return fc;
 }
 
 /* internal function definitions */
-static void setparms()
+void setparms()
 {
         char *cputype;
 
@@ -530,12 +531,12 @@ static void setparms()
 #else
         zp = zp_default;
         zm = zm_default;
-#endif _AIX
+#endif
 
         return;
 }
 
-static void populate(xl, l, h, xh)
+void populate(xl, l, h, xh)
 u_long xl;      /* cell number of low addr in countiguous range */
 u_long l;       /* cell number of low addr */
 u_long h;       /* cell number of high addr */
@@ -648,10 +649,10 @@ u_long xh;      /* cell number of high addr in continguous range */
                         j0 = i0;
                 }
                 /* current piece complete fit */
-                newcell(b0, i0, j0, sl0, xh);
+                newcell(b0, i0, j0, xl0, xh);
         }
 
-        /* fist make sure that the low buddy from m intersects
+        /* first make sure that the low buddy from m intersects
          * with what is to be put under management.
          */
         if (l < m - zq[i])
@@ -694,15 +695,15 @@ u_long xh;      /* cell number of high addr in continguous range */
                         /* part of parts of low buddy are here, put in
                          * high buddy, pass on the low buddy.
                          */
-                        newcell(e, i, i, e xh);
+                        newcell(e, i, i, e, xh);
                 }
                 /* current piece completes fit */
-                newcell(b, i j, xl, xh);
+                newcell(b, i, j, xl, xh);
         }
         return;
 }
 
-static void newcell(b, i, j, xl, xh)
+void newcell(b, i, j, xl, xh)
 u_long b;       /* base of cell */
 u_long i;       /* cell level */
 u_long j;       /* level of cell as high buddy */
@@ -767,5 +768,5 @@ u_long xh;      /* high end of contiguous block */
         return;
 }
 
-#endif ATW_VERSION
+#endif
         

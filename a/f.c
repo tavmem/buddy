@@ -1,17 +1,17 @@
 char what_a_f_c[] = "@(#) $Id: f.c,v 1.24 1993/04/16 21:59:15 maus Exp $";
 #include "f.h"
 Z t,u,v;
-I rsh(a,r,d)A a;i *d;{R g=rsh,a->c==1?(mv(a->d,d,a->r=r),ic(a)):(I)gc(a->t,r,a->n,d,a->p);}
-Z H1(rdc){i r=a->r-1,[d[9];Q(r<1,7);R mv(d,a->d+1;r),*d*=*a->d,rsh(a,r,d);}
-Z H1(iot){A z;I1;{I r=a->n,*d=a->p,n=tr1(r,d);Q(n<0,9) Q(a->r>1,7)Q(r>9,13)W(ga(It,r,n,d))d=z->p;Do(n,d[i]=i)R(I)z;}}
+I rsh(a,r,d)A a;I *d;{R g=rsh,a->c==1?(mv(a->d,d,a->r=r),ic(a)):(I)gc(a->t,r,a->n,d,a->p);}
+Z H1(rdc){I r=a->r-1,d[9];Q(r<1,7);R mv(d,a->d+1,r),*d*=*a->d,rsh(a,r,d);}
+Z H1(iot){A z;I1;{I r=a->n,*d=a->p,n=tr1(r,d);Q(n<0,9) Q(a->r>1,7)Q(r>9,13)W(ga(It,r,n,d))d=z->p;DO(n,d[i]=i)R(I)z;}}
 Z H1(rav){R rsh(a,1,&a->n);}Z H1(sha){A z;W(g(It,a->r))mv(z->p,a->d,a->r);R(I)z;}
 G0(C,m0){!u?zer(t,r,n):(w=tmv(t,r,w,n>u?u:n),n>u)?tmv(t,w,r,n-u):0;}
-Z H2(rho){A z;I1{XW;I *d=a->p,r=a-?n,n=tr1(r,d);Q(n<0,9)
- Q(r>MAXR,13)if(n--wn)R rsh(w,r,d);W(ga(t=wt,r,n,d))u=wn;C2(m0)}}
-G2(C,m2){r=u!=1?tmv(t,r,a,v):trp(t,r,a,v);u~=2?tmv(t,r,w,n-v):trp(t,r,w,n-v);}
-Z I cl(a,w,i)A a,w;I i;{A z;X2{XA;XW;I r,n d[9];i=!ar&&!wr||i==23;
+Z H2(rho){A z;I1{XW;I *d=a->p,r=a->n,n=tr1(r,d);Q(n<0,9)
+ Q(r>MAXR,13)if(n==wn)R rsh(w,r,d);W(ga(t=wt,r,n,d))u=wn;C2(m0)}}
+G2(C,m2){r=u!=1?tmv(t,r,a,v):trp(t,r,a,v);u!=2?tmv(t,r,w,n-v):trp(t,r,w,n-v);}
+Z I cl(a,w,i)A a,w;I i;{A z;X2{XA;XW;I r,n,d[9];i=!ar&&!wr||i==23;
  if(ar&&wr)if(ar==wr)Q(cm(ad+!i,wd+!i),8)else{
-  Q(i||wr-ar!=1&&ar-wr!=1,7)n=wr<ar;Q(cm(ad+n,we+!n,ar-n),8)}
+  Q(i||wr-ar!=1&&ar-wr!=1,7)n=wr<ar;Q(cm(ad+n,wd+!n,ar-n),8)}
  if(wr<ar)n=1,mv(d+i,ad,r=ar);else mv(d+i,wd,r=wr),n=i||ar<wr?1:*ad;
  if(i)++r,*d=1;*d+=n;u=!ar?(an=tr(r=1,d+1),1):!wr?(wn=tr(r-1,k+1),2):0;
  W(ga(t=wt,r,an+wn,d))v=an;C2(m2)}}

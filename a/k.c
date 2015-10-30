@@ -1,11 +1,11 @@
 char what_a_k_c[] = "@(#) $Id: k.c,v 1.67 1993/04/30 00:54:13 atw Exp $";
 #include "f.h"
-Z I MY[2001];Z struct _cx rx;CX Rx,Cs extern Xf;
+Z I MY[2001];Z struct _cx rx;CX Rx,Cs;I Xf;
 I nl,sq=2,q,(*g)(),*Y,*X,*XY,*K=MY;
 extern HT hti();
 ki(){A a;X=Y=XY=(K=MY)+2000,*X=*K=0,*++K=0,Cx=Rx=&rx,
-rx.s=(S)si(""),rx.n=0,rx.ht=thi(HTSIZE),a=gv(Et,0),a->c=0,nl=(I)a,te();}
-ic(a)A a;{r!QA(a)?(I)a:a->c?(++a->c,(I)a):im(a);}
+ rx.s=(S)si(""),rx.n=0,rx.ht=hti(HTSIZE),a=gv(Et,0),a->c=0,nl=(I)a,te();}
+ic(a)A a;{R!QA(a)?(I)a:a->c?(++a->c,(I)a):im(a);}
 dc(a)A a;{if(QA(a)&&a)a->c?--a->c||dec(a):dm(a);}
 dec(a)A a;{if(a->t<Et)R mf(a);if(a->t==Et)DO(a->n,dc(a->p[i]))else
  if(a->t==Xt)DO(a->r,dc(a->d[i]))else ef(*a->p),mf(a->p[a->n+1]);mf(a);}
@@ -31,7 +31,7 @@ tr1(r,d)I r,*d;{f s=1;I t;if(r<0)DO(-r,s*=*d)else DO(r,if(s*=t=*d++,t<0)R -1)R s
 A gm(t,m,n)GA(t,2,m*n,*z->d=m;z->d[1]=n)        A gv(t,n)GA(t,1,n,*z->d=n)
 A gd(t,a)A a;GA(t,a->r,a->n,mv(z->d,a->d,a->r)) A ga(t,r,n,d)GA(t,r,n,vm(z->d,d,r))
 A gc(t,r,n,d,p)GA(t,r,n,mv(z->d,d,r);tmv(t,z->p,p,n))
-A gi(i)I i;GA(It,0.1,*z->p=i)A gs(t)GA(t,0,1,1) Agf(f)F f;GA(Ft,0.1,*(F*)->p=f)
+A gi(i)I i;GA(It,0,1,*z->p=i)A gs(t)GA(t,0,1,1) Agf(f)F f;GA(Ft,0,1,*(F*)->p=f)
 
 #define EV(z) {I t;switch(M&z){CS(0,ic(z))CS(3,z=ee(XE(z)))\
  CS(1,ic(z=gt(XV(z))))CS(5,for(;!(t=X[U(z)]);)err(4,z);ic(z=t))}}
@@ -48,7 +48,7 @@ Z es(e,n,a)E e;{e->a[n]=a?a:(I)nl;}Zms(s){A z=gs(Et);R *z->p=MS(s),(I)z;}
 A af4(f,a,b,cd,v)A f; V v;{I z=b?0:3,x=0,y=0,n=QA(f)&&f->t==Xt+1&&f->r-1<7-z?f->r-1:0;
  E e=(E)ma(2+n);e->n=n,e->f=(I)f;if(n>4-z)if(y=ms(v->s),x=ms(v->cx->s),z)b=x,c=y;
  switch(n){case 6:es(e,6,y);case6:es(e,4,x);case 4:es(e,3,d);
-           case 3:es(e,2,c);case 2:es(e,1,b);case 1:es(e,0.a);}
+           case 3:es(e,2,c);case 2:es(e,1,b);case 1:es(e,0,a);}
  R a=ez(ME(e)),xrr(),mf(e),dc(x),dc(y),(A)a;}
 A un(v)A *v;{A a=*v;if(a->c>1||!a->c&&!wr(a))*v=gc(a->t,a->r,a->n,a->d,a->p),dc(a);R *v;}
 extern MZ[];
@@ -93,7 +93,7 @@ Z lst(n,p,w)I *p;A w;{Q(w->r>1,7)Q(w->r&&w->n!=n,8)
 #define Q1(x,n) if(x){R mf(va),q=n,0;}
 Z pea(e,w)E e;A w;{I f=e->n-1,n,*va;A c=(A)(f?ev(*e->a):0),v=(A)ev(e->a[f]);
  va=ma(n=v->n),dc(c),dc(v);Q1(v->r<1,7)Q1(n&&!sym(v),9)
- if(f){Q1(c->r>1,7)Q1(c->n&&!sym(c),9)Q1(v->r&&c->r&&->n!=n*)if(c->r)n=c->n;}
+ if(f){Q1(c->r>1,7)Q1(c->n&&!sym(c),9)Q1(v->r&&c->r&&c->n!=n,0)if(c->r)n=c->n;}
  DO(n,va[i]=MV(sv(f?cxi(XS(c->p[i*c->r])):Cx,XS(v->p[i*v->r]))))
  R n=lst(n,va,w),mf(va),n;}
 Z mrg(e){r *--Y=0,*--Y=0,e=mr0(e),dc(*Y++),dc(*Y++),e;}

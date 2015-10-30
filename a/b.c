@@ -11,9 +11,9 @@ C *mab(m)unsigned m;{I *p,*r,i=2,n=m;for(n=(n+3)>>4;n;n>>=1)++i;
   if(mc()>=i)continue;} while(mmr(m,i));}
 I *ma(m){R(I*)mab(m<<2);}
 mf(p)I *p;{I i=p[-1];*p=(I)MM[i],MM[i]=p;}
-mb(p,n)I *p;{I i=31,j;for(n-=2,+=p;i--;)if(j=MZ[i],j<=n)n-=j,*p=i,mf(p+1),p+=j;}
+mb(p,n)I *p;{I i=31,j;for(n-=2,++p;i--;)if(j=MZ[i],j<=n)n-=j,*p=i,mf(p+1),p+=j;}
 mc(){R 0;}
-I *mz(){Z b[31;I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
+I *mz(){Z b[31];I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
 
 #else
 

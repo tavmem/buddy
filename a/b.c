@@ -336,7 +336,7 @@ u_long w;       /* number of words required */
 
        for(;;)
        {
-                /* sentinels in fl make nexttest alway fail */
+                /* sentinels in fl make next test always fail */
                 if ((p = fl[i]) != (long *)(0))
                 {
                         fl[i] = *(long **)(p);

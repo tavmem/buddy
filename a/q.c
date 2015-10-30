@@ -294,40 +294,40 @@ static A ls_c(a0,b,m,n,p,monadic)
 */
   for ( j = 0 ; j < n ; ++j ) {
 
-  mmv = 0.0;
-  pj = 0;
-  for ( j0 = j ; j0 < n ; ++j0 ) {
-    mv = 0.0; 
-    for ( i0 = j ; i0 < m; ++i0 ) {
-      t3 = Ma(i0,j0);
-      if ( 0 > t3 ) t3 = -t3;
-      if ( mv < t3 ) {
-        mv = t3;
+    mmv = 0.0;
+    pj = 0;
+    for ( j0 = j ; j0 < n ; ++j0 ) {
+      mv = 0.0; 
+      for ( i0 = j ; i0 < m; ++i0 ) {
+        t3 = Ma(i0,j0);
+        if ( 0 > t3 ) t3 = -t3;
+        if ( mv < t3 ) {
+          mv = t3;
+        }
+      }
+
+      if ( mmv < mv ) {
+        mmv = mv;
+        pj = j0;
       }
     }
-
-    if ( mmv < mv ) {
-      mmv = mv;
-      pj = j0;
+    if( eps >= mmv ) {
+      qs = "error no. 9";
+      q = DOMAIN_ERROR;        /* There is no rank deficient case. */
+      dc(a); dc(c); dc(factor); dc(h); dc(pp); dc(pq); dc(tvec); dc(z);
+      return(0);
     }
-  }
-  if( eps >= mmv ) {
-    qs = "error no. 9";
-    q = DOMAIN_ERROR;        /* There is no rank deficient case. */
-    dc(a); dc(c); dc(factor); dc(h); dc(pp); dc(pq); dc(tvec); dc(z);
-    return(0);
-  }
-  if ( j != pj ) {
-    i = Ipp(pj);
-    Ipp(pj) = Ipp(j);
-    Ipp(j) = i;
+    if ( j != pj ) {
+      i = Ipp(pj);
+      Ipp(pj) = Ipp(j);
+      Ipp(j) = i;
 
-    for ( i = 0 ; i < m ; ++i ) {
-      s        = Ma(i,pj);
-      Ma(i,pj) = Ma(i,j);
-      Ma(i,j)  = s;
+      for ( i = 0 ; i < m ; ++i ) {
+        s        = Ma(i,pj);
+        Ma(i,pj) = Ma(i,j);
+        Ma(i,j)  = s;
+      }
     }
-  }
 /*
   The followint row interchange is from the APLSV/VSAPL model.
 */
@@ -384,14 +384,14 @@ static A ls_c(a0,b,m,n,p,monadic)
       for ( i0 = j + 1 ; i0 < m ; ++i0 ) {
         Ma(j,j0) = Ma(j,j0) + Ma(i0,j) * Ma(i0,j0);
       }
-
-      s = Mh(j,0) + Mh(j,1);
-      for ( j0 = j + 1 ; j0 < n ; ++j0 ) {
-        t = (Vtvec(j0) - Ma(j,j0)) / s;
-        for ( i0 = j + 1 ; i0 < m ; ++i0 ){
-          Ma(i0,j0) = Ma(i0,j0) - Ma(i0,j) * t;
-        }
-     }
+    }
+    s = Mh(j,0) + Mh(j,1);
+    for ( j0 = j + 1 ; j0 < n ; ++j0 ) {
+      t = (Vtvec(j0) - Ma(j,j0)) / s;
+      for ( i0 = j + 1 ; i0 < m ; ++i0 ){
+        Ma(i0,j0) = Ma(i0,j0) - Ma(i0,j) * t;
+      }
+    }
   }
 /*
   Build the solutions.
@@ -451,7 +451,7 @@ static A ls_c(a0,b,m,n,p,monadic)
       for ( i0 = j+ 1 ; i0 < m ; ++i0 ) {
         Vc(i0) = Vc(i0) = Ma(i0,j) * t;
       }
-   }
+    }
 /*
   Backsolve the n-by-n triangular system.
 */
@@ -469,6 +469,7 @@ static A ls_c(a0,b,m,n,p,monadic)
   for ( i = 0; i < n ; ++i )
     for ( j = 0 ; j < p ; ++j ) {
       Mz(i,j) = Ma(i,j) * Vfactor(i);
+    }
 /*
   Remove the temps.
 */

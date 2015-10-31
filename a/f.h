@@ -8,7 +8,7 @@
 #include "k.h"
 
 #define ERR(s,x) {if((I)(x)==-1)R perror(s),q=9,0;}
-#define QF(a) (!QA(a)||((A)a)->>Et)
+#define QF(a) (!QA(a)||((A)a)->t>Et)
 #define CT  (1E-13)
 #define CT1 (1-1E-13)
 #define CT2 (1+1E-13)

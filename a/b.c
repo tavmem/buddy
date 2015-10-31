@@ -3,7 +3,7 @@ char what_a_b_c[] = "@(#) $Id: b.c,v 1.19 1992/12/03 20:47:01 atw Exp $";
 #ifdef ATW_VERSION
 
 #include "k.h"
-I MZ[31]={1};Z *MM[31];m1(){MZ[7]=MZ[13]=MZ[19]=MZ[25]=2;DO(30,MZ[i+1]+=MZ[i]*2)}
+I MZ[31]={1};Z I *MM[31];m1(){MZ[7]=MZ[13]=MZ[19]=MZ[25]=2;DO(30,MZ[i+1]+=MZ[i]*2)}
 Z mmr(n,i){if(i<18)i=18;R err(2,n),tmp((MZ[i]+2)<<2),1;} /* Dan MZ[i+1]? */
 C *mab(m)unsigned m;{I *p,*r,i=2,n=m;for(n=(n+3)>>4;n;n>>=1)++i;
  do{if(p=MM[i])R MM[i]=(I*)*p,(C*)p;for(n=i;n<30;)if(p=MM[++n]){
@@ -13,7 +13,7 @@ I *ma(m){R(I*)mab(m<<2);}
 mf(p)I *p;{I i=p[-1];*p=(I)MM[i],MM[i]=p;}
 mb(p,n)I *p;{I i=31,j;for(n-=2,++p;i--;)if(j=MZ[i],j<=n)n-=j,*p=i,mf(p+1),p+=j;}
 mc(){R 0;}
-I *mz(){Z b[31];I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
+I *mz(){Z I b[31];I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
 
 #else
 

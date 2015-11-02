@@ -65,7 +65,7 @@ extern "C" I *tm(I n);
 extern "C" void tf ( void );
 extern "C" I *ma(I n);
 extern "C" void mf(I *);
-extern "C" I *tr(I r,I *d);
+extern "C" I tr(I r,I *d);
 extern "C" APL,*Y,*X,*K,*J,sq,q(*g)();
 extern "C" I Df,Gf,Sf,Tf,Xf,Ef;
 extern "C" A nl;

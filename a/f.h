@@ -35,6 +35,6 @@
 #define V0 { if (!wr)*wd=wr=1;}
 #define OF(r,x,y) {F f=(F)(x)*(F)(y);Q(f>2e9,9)r=f;}
 
-#define EQ(i,x) for (;Xf?xf():0,z=(x),q;)if(dc(z),q>-2)eff(e,f);else if (q=0,ep_cf(i),n-i==2)ep_cf(i+1);
+#define EQ(i,x) for (;Xf?xf():0,z=(x),q;)if(dc(z),q>-2)err(q,f);else if (q=0,ep_cf(i),n-i==2)ep_cf(i+1);
 
 #endif

@@ -80,7 +80,7 @@ extern V vi();
 extern CX cxi(), cx();
 extern C *qs,*tst(),*tmv(),*trp(),*zer();
 extern A ci(),ep_cf(),ga(),gv(),gs(),gc(),dg(),gi(),gf(),gm(),ld1(),un();
-extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*k,*J,sq,q,(*g)(),Itm(),*ma(),tr(),nl;
+extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*J,sq,q,(*g)(),Itm(),*ma(),tr(),nl;    // *k
 extern I Df,Gf,SfTf,Xf,EF;
 #endif
 

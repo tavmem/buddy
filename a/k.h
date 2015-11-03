@@ -65,7 +65,7 @@ extern "C" I *tm(I n);
 extern "C" void tf ( void );
 extern "C" I *ma(I n);
 extern "C" void mf(I *);
-extern "C" I tr(I r,I *d);
+//extern "C" I tr(I r,I *d);
 extern "C" APL,*Y,*X,*K,*J,sq,q(*g)();
 extern "C" I Df,Gf,Sf,Tf,Xf,Ef;
 extern "C" A nl;
@@ -80,7 +80,7 @@ extern V vi();
 extern CX cxi(), cx();
 extern C *qs,*tst(),*tmv(),*trp(),*zer();
 extern A ci(),ep_cf(),ga(),gv(),gs(),gc(),dg(),gi(),gf(),gm(),ld1(),un();
-extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*J,sq,q,(*g)(),Itm(),*ma(),tr(),nl;    // *k
+extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*K,*J,sq,q,(*g)(),Itm(),*ma(),nl;    // *k,tr()
 extern I Df,Gf,SfTf,Xf,EF;
 #endif
 

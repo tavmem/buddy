@@ -413,7 +413,7 @@ A ep_gsv(aname) A aname;
 #define FtItCHK(aval,maxint) \
  if (1!=aval->n) ERROUT(ERR_LENGTH); \
  if (Ft==aval->t) \
-    ival=(((double(maxint)<(*(F *)(aval->p)))?maxint:irint(*(F *)(aval->p)); \
+    ival=(((double)maxint)<(*(F *)(aval->p)))?maxint:irint(*(F *)(aval->p)); \
  else if (It==aval->t) ival=*aval->p; \
  else ERROUT(ERR_TYPE); \
  if (0>ival) ERROUT(ERR_DOMAIN);
@@ -687,7 +687,7 @@ A ep_hashstat(a)A a;
   HT ht; A z; I i;V v;
   if (qz(a)) R SymbolTableHashChainLengths();
   if (Et!=a->t||1!=a->n||!QS(*a->p)) ERROUT(ERR_DOMAIN);
-  ht=cx1(XS(*a->p))->ht;
+  ht=cxi(XS(*a->p))->ht;
   z=gv(It,ht->nb);bzero(z->p,ht->nb*sizeof(I));
   for(i=0;i<ht->nb;++i)for(v=ht->b[i];v;v=v->v)z->p[i]++;
   R z;

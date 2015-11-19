@@ -15,7 +15,7 @@ typedef union{I *i;F *f;C *c;A *a;}P;
 struct a{I c,t,r,n,d[MAXR],i,p[1];};
 typedef struct _s{struct _s *s;C n[4];}*S;
 #define CX_USED
-typedef struct _ht{unsigned nb,ni;struct _v *b[1];}HT;
+typedef struct _ht{unsigned nb,ni;struct _v *b[1];}*HT;
 typedef struct _cx{HT ht;S s;struct _cx *n;}*CX;
 typedef struct _v{I a;S s; struct _v *v;CX cx;I t,*l,e,r,o,f,c;
                   void *attr;I z,p,q;A cd;I rff,rfc,rpf,rpc;A scd,i;}*V;

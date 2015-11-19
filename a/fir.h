@@ -118,6 +118,6 @@ is not-NULL, it also check for a match to a particular char string. */
 #ifndef iszero
 #define iszero(X)   (X==0.0)
 #endif iszero
-#indif _AIX
+#endif
 
 #endif

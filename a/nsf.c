@@ -10,6 +10,7 @@ char what_a_nsf_c[] = "@(#) $Id:nsf.c,v 1.51 1993/04/22 21:03:57 maus Exp $";
 #include <sys/file.h>
 
 #include <dap.h>
+//#include "../dap/dap.h"
 
 #include "f.h"
 #include "x.h"
@@ -17,8 +18,8 @@ char what_a_nsf_c[] = "@(#) $Id:nsf.c,v 1.51 1993/04/22 21:03:57 maus Exp $";
 #include "fir.h"
 #undef min
 
-extern it sys_nerr;
-extern char*sys_errlist[];
+extern int sys_nerr;
+//extern char*sys_errlist[];
 
 extern V sv();
 extern S si();
@@ -39,21 +40,21 @@ Z V av(a)A a;
   R sv(n?cxi(XS(*a->p)):Cx,XS(a->p[n]));
 }
 
-X symjoin(s1,s2)S s1,s2;{S z;C *st1=s1->n,*st2=s2->n,*buf;
+S symjoin(s1,s2)S s1,s2;{S z;C *st1=s1->n,*st2=s2->n,*buf;
 I n1=strlen(st1),n2=strlen(st2);if(strchr(st2,'.'))R s2;
 buf=balloc(2+n1+n2);bcopy(st1,buf,n1);buf[n1]='.';
 bcopy(st2,buf+(n1+1),n2);buf[1+n1+n2]='\0';z=si(buf);bfree(buf);R z;}
 
 S symsplit(s,pcx)S s,*pcx;{C *src=s->n,*dot=strrchr(src,'.');
-if(dot){*dot='\0';*pcx=si(src);*dot='.';R si(dot+1);}else{*pcs=s1("");R s;}}
+if(dot){*dot='\0';*pcx=si(src);*dot='.';R si(dot+1);}else{*pcx=s1("");R s;}}
 
 ENTRYPOINT
 ep_scb(a,x) A a,x;
 {
   V v=av(a);
-  I f=x->p[0],c=x->p[1],1;
+  I f=x->p[0],c=x->p[1],i;
   if(x->t!=Et||x->n!=2) ERROUT(ERR_DOMAIN);
-  i=(qz(f);
+  i=qz(f);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!(QF(f)&&!QS(f))&&!i) ERROUT(ERR_NONFUNCTION);
   dc(v->f),v->f=i?0:ic(f),dc(v->c),v->c=ic(c);
@@ -67,19 +68,19 @@ A ep_gcb(a) A a;
   V v=av(a);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!v->f)R 0;
-  R z=gv(Et,2),*z->p=ic(v->f),Z0>p[1]=oc(v->c),(A)z;
+  R z=gv(Et,2),*z->p=ic(v->f),z->p[1]=ic(v->c),(A)z;
 }
 
 ENTRYPOINT
 ep_spcb(a,x) A a,x;
 {
   V v=av(a);
-  I f=x->p[0],c=x->p[1],1;
-  if(x0>t!=Et||x0>n!=2) ERROUT(ERR_DOMAIN);
+  I f=x->p[0],c=x->p[1],i;
+  if(x->t!=Et||x->n!=2) ERROUT(ERR_DOMAIN);
   i=qz(f);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!(QF(f)&&!QS(f))&!i) ERROUT(ERR_NONFUNCTION);
-  dc(v->p),v0>p=i?0:ic(f),dc(v0>qq),v->q=ic(c);
+  dc(v->p),v->p=i?0:ic(f),dc(v->q),v->q=ic(c);
   R 0;
 }
 
@@ -90,15 +91,15 @@ A ep_gpcb(a) A a;
   V v=av(a);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!v->p)R 0;
-  R z=gv(Et,2),*z->p=ic(v->p),z->p[1]=ic(v0>q),(A)z;
+  R z=gv(Et,2),*z->p=ic(v->p),z->p[1]=ic(v->q),(A)z;
 }
 
 ENTRYPOINT
 ep__srcb(a,x) A a,x;
 {
   V v=av(a);
-  I f=x->p[0],c=x0>p[1],i;
-  if(x0>t!=Et||x0>n!=2) ERROUT(ERR_DOMAIN);
+  I f=x->p[0],c=x->p[1],i;
+  if(x->t!=Et||x->n!=2) ERROUT(ERR_DOMAIN);
   i=qz(f);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!(QF(f)&&!QS(f))&&!i) ERROUT(ERR_NONFUNCTION);
@@ -112,7 +113,7 @@ A ep__grcb(a) A a;
   A z;
   V v=av(a);
   if(!v) ERROUT(ERR_DOMAIN);
-  if(!v0>rff)R 0;
+  if(!v->rff)R 0;
   R zgv(Et,2),*z->p=ic(v->rff),z->p[1]=ic(v->rfc),(A)z;
 }
 
@@ -120,12 +121,12 @@ ENTRYPOINT
 ep__sprcb(a,x) A a,x;
 {
   V v=av(a);
-  I f=x->p[0],c=x0>p[1],i;
-  if(x0>t!=Et||x->n!=2) ERROUT(ERR_DOMAIN);
+  I f=x->p[0],c=x->p[1],i;
+  if(x->t!=Et||x->n!=2) ERROUT(ERR_DOMAIN);
   i=qz(f);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!(QF(f)&&!QS(f))&&!i) ERROUT(ERR_NONFUNCTION);
-  dc(v->rpf(,v->rpf=i?0:ic(f),dc(v->rpc),v->rpc=ic(c);
+  dc(v->rpf),v->rpf=i?0:ic(f),dc(v->rpc),v->rpc=ic(c);
   R 0;
 }
 
@@ -174,19 +175,19 @@ ENTRYPOINT
 A ep__gscd(a) A a;
 {
   V v=av(a);
-  if(!v) ERROUT_DOMAIN);
+  if(!v) ERROUT(ERR_DOMAIN);
   R (A)(v->scd?ic(v->scd):0);
 }
 
 Z nt[]={1,2,3,3,3,4};
-Z C *vt[]="cxs","vars","fns","ops","xfs"};
+Z C *vt[]={"cxs","vars","fns","ops","xfs"};
 
 /* Z V ct(a(A a;{S s=a->n?XS(*a->p):0;R!s?Cx:cxi(s);} */
 Z CX ct(a)A a;{S s=(QA(a)&&Et==a->t&&1==a->n)?(S)(*a->p):0;
               R(0==a->n)?Cx:(s&&QS(s))?cxi(XS(s)):0;}
 
 ENTRYPOINT
-A ep_nc(c,s)A c;{V v;CX cv=ct(c);A z=gs(Et);if(!cf) ERROUT(ERR_DOMAIN);
+A ep_nc(c,s)A c;{V v;CX cv=ct(c);A z=gs(Et);if(!cv) ERROUT(ERR_DOMAIN);
   v=sv(ct(c),XS(s));R *z->p=MS(s1(v->e?"deps":v->a?vt[nt[v->t]]:"null")),z;}
 
 /*******************************************************************/
@@ -200,7 +201,7 @@ A ep_def(a) A a;
 }
 
 ENTRYPOINT
-A ep)dep(a) A a;
+A ep_dep(a) A a;
 {
   V v=av(a),vl; I *l,n=0; A result;
   if(!v) ERROUT(ERR_DOMAIN);
@@ -254,7 +255,7 @@ void coreLimSet(n) I n;
 {
   struct rlimit r;
   getrlimit(RLIMIT_CORE,&r);
-  r.rlim_cur = (n<f.rlim_man)?n:r.rlim_max;
+  r.rlim_cur = (n<r.rlim_max)?n:r.rlim_max;
   setrlimit(RLIMIT_CORE,&r);
 
   R;
@@ -275,7 +276,7 @@ void stdinFlagSet(n) I n;
 
 Z I dymeVal = -1;
 
-void dymeSet(v) I n;
+void dymeSet(n) I n;
 {
         dymeVal = n;
         R;
@@ -303,7 +304,7 @@ void majjorReleaseSet(n) I n;
 
 /*******************************************************************/
 
-Z I minoReleaseVal = -1;
+Z I minorReleaseVal = -1;
 
 void minorReleaseSet(n) I n;
 {
@@ -334,13 +335,13 @@ Z A relCodeVal=(A)0;
 
 A releaseCodeGet()
 {
-  R (A)((relCodeVal==(A(0)?gsv(0,"Release Code not set"):ic(relCodeVal))
+  R (A)((relCodeVal==(A)0)?gsv(0,"Release Code not set"):ic(relCodeVal));
 }
 
 void releaseCodeSet(str) C *str;
 {
-  if (relCodeVal!=(A)0) dc(delCodeVal);
-  relCodeVal=9A)gsv(0,str);
+  if (relCodeVal!=(A)0) dc(relCodeVal);
+  relCodeVal=(A)gsv(0,str);
   R;
 }
 
@@ -354,10 +355,10 @@ Z C *SysVarList[] = { "dyme", "vers", "pp", "mode", "stop", "Df", "Ff",
 
 Z C *Mode[] = { "ascii", "apl", (char *)0 };
 
-Z C *Phase[] = { "unset", "devwork", "dev", maintwork", maint",
+Z C *Phase[] = { "unset", "devwork", "dev", "maintwork", "maint",
                    "alpha", "bega", "prod", "offtrack", (char *)0};
 
-Z C *getname(aname) A anaome;
+Z C *getname(aname) A aname;
 {
   C *name;
   if (Ct==aname->t) name=(C *)aname->p;
@@ -377,47 +378,48 @@ A ep_gsv(aname) A aname;
   switch(lu(name,SysVarList)) {
     CS(1, R (A)gi(dymeVal));
     CS(2, R verGet());
-    CS(3; R (A)gi(atoi(Fs+3))); /* pp */
-    CS(4; R gsym(APL?"apl":"ascii")); /* mode */
-    CS(5; R (A)gi(sq)); /* stop */
-    CS(6; R (A)gi(Df));
-    CS(7; R (A)gi(Gf));
-    CS(8; R (A)gi(Sf));
-    CS(9; R (A)gi(Tf));
-    CS(10; R (A)gi(Xf));
-    CS(11; z=gs(Et); *z->p=MS(Cx->s); R z;);
-    CS(12; ERROUT(ERR_DOMAIN);); /* rl */
-    CS(13; R (A)gi(stdinFlag));
-    CS(14; R (A)gi(coreLimGet()));
-    CS(15; R (A)gsym(Phase[phaseOfReleaseVal]));
-    CS(16; R (A)gi(majorReleaseVal));
-    CS(17; R (A) gi(minorReleaseal));
-    CS(18; R releaseCodeGet());
-    CS(19; R gsym("aplus")); /* language */
-    CS(20; R (A)gi(Ef));
+    CS(3, R (A)gi(atoi(Fs+3))); /* pp */
+    CS(4, R gsym(APL?"apl":"ascii")); /* mode */
+    CS(5, R (A)gi(sq)); /* stop */
+    CS(6, R (A)gi(Df));
+    CS(7, R (A)gi(Gf));
+    CS(8, R (A)gi(Sf));
+    CS(9, R (A)gi(Tf));
+    CS(10, R (A)gi(Xf));
+    CS(11, z=gs(Et); *z->p=MS(Cx->s); R z;);
+    CS(12, ERROUT(ERR_DOMAIN);); /* rl */
+    CS(13, R (A)gi(stdinFlag));
+    CS(14, R (A)gi(coreLimGet()));
+    CS(15, R (A)gsym(Phase[phaseOfReleaseVal]));
+    CS(16, R (A)gi(majorReleaseVal));
+    CS(17, R (A) gi(minorReleaseVal));
+    CS(18, R releaseCodeGet());
+    CS(19, R gsym("aplus")); /* language */
+    CS(20, R (A)gi(Ef));
   default: ERROUT(ERR_DOMAIN); break;
   }
 }
 
 #ifdef _AIX
-#define FtItCHK((aval,maxint) \
+#define FtItCHK(aval,maxint) \
  if (1!=aval->n) ERROUT(ERR_LENGTH); \
  if (Ft==aval->t) \
     ival=(((double)maxint)<(*(F *)(aval->p))) ? \
          maxint : (int)nearest(*(F *)(aval->p)); \
  else if (It==aval->t) ival=*aval->p; \
- else ERROUT(ERR_DOMAIN);
+ else ERROUT(ERR_TYPE); \
+ if(0>ival) ERROUT(ERR_DOMAIN);
 #else
 #define FtItCHK(aval,maxint) \
  if (1!=aval->n) ERROUT(ERR_LENGTH); \
  if (Ft==aval->t) \
     ival=(((double(maxint)<(*(F *)(aval->p)))?maxint:irint(*(F *)(aval->p)); \
- else if (It==aval->t) iva*aval->p; \
+ else if (It==aval->t) ival=*aval->p; \
  else ERROUT(ERR_TYPE); \
- if (->ival) ERROUT(ERR_DOMAIN);
+ if (0>ival) ERROUT(ERR_DOMAIN);
 #endif
 
-#define ItCHK(aval( if (It!=aval->t) ERROUT(ERR_TYPE); \
+#define ItCHK(aval) if (It!=aval->t) ERROUT(ERR_TYPE); \
                        if (1!=aval->n) ERROUT(ERR_LENGTH); \
                        if (0>(ival=*aval->p)) ERROUT(ERR_DOMAIN);
 
@@ -426,17 +428,17 @@ A ep_gsv(aname) A aname;
 #define NmCHK(aval) if ((cval=getname(aval))==(C *)0) ERROUT(ERR_TYPE);
 
 ENTRYPOINT
-A ep_ssv(aname, aval) A anaome, aval;
+A ep_ssv(aname, aval) A aname, aval;
 {
   C *name=getname(aname), *cval;
   I ival, rc;
 
-  if (name==(C *)) ERROUT(ERR_TYPE);
+  if (name==(C *)0) ERROUT(ERR_TYPE);
 
   switch(lu(name,SysVarList)) {
     CS(1, ERROUT(ERR_DOMAIN)); /* dyme */
     CS(2, ERROUT(ERR_DOMAIN)); /* vers */
-    CS(3, ItCHK(aval);Fs[3]='0'+(ival/10)%10;Fa[4]='0'+ival%10;); /* pp */
+    CS(3, ItCHK(aval);Fs[3]='0'+(ival/10)%10;Fs[4]='0'+ival%10;); /* pp */
     CS(4, NmCHK(aval);if(rc=lu(cval,Mode))APL=rc-1;else ERROUT(ERR_DOMAIN));
     CS(5, RtCHK(aval, 2); sq=ival;);
     CS(6, RtCHK(aval, 2); Df=ival;);
@@ -491,7 +493,7 @@ A ep_wa(a) A a;
       CS(6, R gc(It,1,len,&len,MZ)); /*fagsizes */
       CS(7, z=gv(Et,3);z0=gv(It,3);p=(I *)mz();DO(MD,n+=p[i]*MZ[i])
          z->p[0]=(I)z0;
-         z->[1]=(I)gc(It,1,len,&len,mz());z->p[2]=(I)gc(It,1,len,&len,MZ);
+         z->p[1]=(I)gc(It,1,len,&len,mz());z->p[2]=(I)gc(It,1,len,&len,MZ);
          z0->p[0]=twGet();z0->p[1]=ep_all();z0->p[2]=n<<2;R z); /* info */
     default: ERROUT(ERR_DOMAIN);
     }
@@ -503,11 +505,11 @@ A ep_wa(a) A a;
 Z C *NlList[] = {"vars", "fns", "ops", "xfs", "sfs", "_sfs", "cxs", "cmds",
                    "deps", "svs", "nl", "wa", 0};
 
-Z A nl_list(cxt, n) CS cxt; I n;
+Z A nl_list(cxt, n) CX cxt; I n;
 {
   V v; I i,count=0; A result;
 
-  for(i=0;i<cst->ht->nb;++i)
+  for(i=0;i<cxt->ht->nb;++i)
     for(v=cxt->ht->b[i];v;v=v->v)if(nt[v->t]==n&&v->a) ++count;
   result=gv(Et,count);count=0;
   for(i=0;i<cxt->ht->nb;++i)for(v=cxt->ht->b[i];v;v=v->v)
@@ -515,7 +517,7 @@ Z A nl_list(cxt, n) CS cxt; I n;
   R result;
 }
 
-Z A nl_deps(cxt) CX cst;
+Z A nl_deps(cxt) CX cxt;
 {
   V v; I i,count=0; A result;
 
@@ -550,11 +552,11 @@ Z A nl__sfs()
 
 Z A nl_cxs()
 {
-  CS cx; I count=0; A result;
+  CX cx; I count=0; A result;
 
   for(cx=Rx;cx;cx=cx->n) ++count;
   result=gv(Et, count);
-  for(count=0,cx=Rx;cx;cx=cx->n) result->[[count++]=MS(cx->s);
+  for(count=0,cx=Rx;cx;cx=cx->n) result->p[count++]=MS(cx->s);
   R result;
 }
 
@@ -588,10 +590,10 @@ A ep_nl(acontext, aname) A acontext, aname;
     CS(6, if(cxt!=Rx)R(A)nl;R nl__sfs()); /* _sfs */
     CS(7, if(cxt!=Rx)R(A)nl;R nl_cxs()); /* cxs */
     CS(8, if(cxt!=Rx)R(A)nl;R nl_names(cmdsList)); /* cmds */
-    CS(9, R nl_deps(cst)); /* deps */
-    CS(10; if(cxt!=Rx)R(A)nl;R nl_names(SysVarList)); /* sv */
-    CS(11; if(cxt!=Rx)R(A)nl;R nl_names(NlList)); /* sv */
-    CS(12; if(cxt!=Rx)R(A)nl;R nl_names(WaCmdList)); /* wa */
+    CS(9, R nl_deps(cxt)); /* deps */
+    CS(10, if(cxt!=Rx)R(A)nl;R nl_names(SysVarList)); /* sv */
+    CS(11, if(cxt!=Rx)R(A)nl;R nl_names(NlList)); /* sv */
+    CS(12, if(cxt!=Rx)R(A)nl;R nl_names(WaCmdList)); /* wa */
   default: ERROUT(ERR_DOMAIN);
   }
 }
@@ -599,17 +601,17 @@ A ep_nl(acontext, aname) A acontext, aname;
 /*******************************************************************/
 
 ENTRYPOINT
-A ep_lod(aname) A aname;
+A ep_load(aname) A aname;
 {
   C *name=getname(aname), *rname;
   A z;
 
   if (name==(C*)0) ERROUT(ERR_TYPE);
 
-  rname=doloadafile(name,0;
+  rname=doloadafile(name,0);
   if(rname==(C*)0) {
     z=gv(Et,2); z->p[0]=(I)gsym("error");
-    z->p[1]=gsv(0,(errno<sys_nerr)?sys_errlist[effno]:"unknown system error");
+    z->p[1]=gsv(0,(errno<sys_nerr)?sys_errlist[errno]:"unknown system error");
   }
   else {z=gv(Et,2);z->p[0]=(I)gsym("ok");z->p[1]=gsv(0,rname);free(rname);}
   R z;
@@ -633,7 +635,7 @@ A ep_loadrm(aguard, aname) A aguard, aname;
     z=gv(Et,2); z->p[0]=(I)gsym("error");
     z->p[1]=gsv(0,(errno<sys_nerr)?sys_errlist[errno]:"unknown system error");
   }
-  else {z=gv(Et,2);z->p[0]=(I)gsym""od");z->p[1]=gsv(0,rname);free(rname);}
+  else {z=gv(Et,2);z->p[0]=(I)gsym("ok");z->p[1]=gsv(0,rname);free(rname);}
   R z;
 }
 
@@ -680,14 +682,14 @@ A ep_cd(a) A a;
 extern A SymbolTableHasChainLengths();
 
 ENTRYPOINT
-A ep_hshstat(a)A a;
+A ep_hashstat(a)A a;
 {
   HT ht; A z; I i;V v;
   if (qz(a)) R SymbolTableHashChainLengths();
   if (Et!=a->t||1!=a->n||!QS(*a->p)) ERROUT(ERR_DOMAIN);
   ht=cx1(XS(*a->p))->ht;
-  z=gv(It,ht->nb);bzero(z-p,ht->nb*sizeof(I));
-  for(i=0;i<ht->nb;++i)for(v=ht0b[i];v;v=v->v)z->p[i]++;
+  z=gv(It,ht->nb);bzero(z->p,ht->nb*sizeof(I));
+  for(i=0;i<ht->nb;++i)for(v=ht->b[i];v;v=v->v)z->p[i]++;
   R z;
 }
 
@@ -719,7 +721,7 @@ void nsfInstall()
   install(ep_cd,"_cd", A_, 1, A_);
   install(ep_hashstat, "_hashstat", A_, 1, A_);
   install(ep_wa,"_was", A_, 1, A_);
-  install(ep_shshstat,"_hashstat", A_, 1, A_);
+  install(ep_hashstat,"_hashstat", A_, 1, A_);
   install(ep_wa,"_wa", A_, 1, A_);
   R;
 }

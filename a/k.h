@@ -81,7 +81,7 @@ extern CX cxi(), cx();
 extern C *qs,*tst(),*tmv(),*trp(),*zer();
 extern A ci(),ep_cf(),ga(),gv(),gs(),gc(),dg(),gi(),gf(),gm(),ld1(),un();
 extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*K,*J,sq,q,(*g)(),Itm(),*ma(),nl;    // *k,tr()
-extern I Df,Gf,SfTf,Xf,EF;
+extern I Df,Gf,Sf,Tf,Xf,Ef;
 #endif
 
 #define T(x) ((x)<<(t+2&3))

@@ -3,14 +3,14 @@ char what_a_nsf_c[] = "@(#) $Id:nsf.c,v 1.51 1993/04/22 21:03:57 maus Exp $";
 
 #include <stdlib.h>
 #include <math.h>
+#include <errno.h>
 #include <string.h>
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <sys/param.h>
 #include <sys/file.h>
 
-#include <dap.h>
-//#include "../dap/dap.h"
+#include <dap/dap.h>
 
 #include "f.h"
 #include "x.h"
@@ -18,8 +18,11 @@ char what_a_nsf_c[] = "@(#) $Id:nsf.c,v 1.51 1993/04/22 21:03:57 maus Exp $";
 #include "fir.h"
 #undef min
 
-extern int sys_nerr;
-//extern char*sys_errlist[];
+#define HAVE_STRERROR 1
+#ifndef HAVE_STRERROR 
+  extern int sys_nerr;
+  extern char *sys_errlist[];
+#endif
 
 extern V sv();
 extern S si();
@@ -182,7 +185,7 @@ A ep__gscd(a) A a;
 Z nt[]={1,2,3,3,3,4};
 Z C *vt[]={"cxs","vars","fns","ops","xfs"};
 
-/* Z V ct(a(A a;{S s=a->n?XS(*a->p):0;R!s?Cx:cxi(s);} */
+/* Z V ct(a)A a;{S s=a->n?XS(*a->p):0;R!s?Cx:cxi(s);} */
 Z CX ct(a)A a;{S s=(QA(a)&&Et==a->t&&1==a->n)?(S)(*a->p):0;
               R(0==a->n)?Cx:(s&&QS(s))?cxi(XS(s)):0;}
 
@@ -610,8 +613,14 @@ A ep_load(aname) A aname;
 
   rname=doloadafile(name,0);
   if(rname==(C*)0) {
-    z=gv(Et,2); z->p[0]=(I)gsym("error");
-    z->p[1]=gsv(0,(errno<sys_nerr)?sys_errlist[errno]:"unknown system error");
+    #ifdef HAVE_STRERROR
+      char *errstr=strerror(errno);
+      z=gv(Et,2); z->p[0]=(I)gsym("error");
+      z->p[1]=(I)gsv(0,(errstr)?errstr:"unknown system error");
+    #else
+      z=gv(Et,2); z->p[0]=(I)gsym("error");
+      z->p[1]=(I)gsv(0,(errno<sys_nerr)?sys_errlist[errno]:"unknown system error");
+    #endif
   }
   else {z=gv(Et,2);z->p[0]=(I)gsym("ok");z->p[1]=gsv(0,rname);free(rname);}
   R z;
@@ -632,8 +641,14 @@ A ep_loadrm(aguard, aname) A aguard, aname;
   }
   rname=doloadafile(name,1);
   if(rname==(C*)0) {
-    z=gv(Et,2); z->p[0]=(I)gsym("error");
-    z->p[1]=gsv(0,(errno<sys_nerr)?sys_errlist[errno]:"unknown system error");
+    #ifdef HAVE_STRERROR
+      char *errstr=strerror(errno);
+      z=gv(Et,2); z->p[0]=(I)gsym("error");
+      z->p[1]=(I)gsv(0,(errstr)?errstr:"unknown system error");
+    #else
+      z=gv(Et,2); z->p[0]=(I)gsym("error");
+      z->p[1]=(I)gsv(0,(errno<sys_nerr)?sys_errlist[errno]:"unknown system error");
+    #endif
   }
   else {z=gv(Et,2);z->p[0]=(I)gsym("ok");z->p[1]=gsv(0,rname);free(rname);}
   R z;

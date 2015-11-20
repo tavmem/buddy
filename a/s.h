@@ -15,7 +15,7 @@
 #else
 #define Vol
 #include <sys/termios.h>
-#include <sys/filio.h>
+//#include <sys/filio.h>
 #define SH(x) strlen(springf(b,s,x))
 #endif
 

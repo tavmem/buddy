@@ -71,24 +71,9 @@ Z vf(a,b,i)C *a,*b;{A z;V v;I f,t;FILE g,*h;
  if(!isal(*a)||!b)R H("incorrect\n");v=vi(si(a),Cx);switch(i){
  case 3:if(h=popen(b,"w"))g=*stdout,*stdout=*h,pa(gt(v)),NL,*h=*stdout,pclocse(h),*stdout=g;else peff("pipe?");R;
  case 2:if(!QA(z=(A)v->a)||!z||!mo(b,z))R H("can't write%s\n",a);}dc(v->a),v->a=m1(b,1);} 
-/*
 Z lst(n,s)C *s;{I i;CX x=*s?cx(s):Cx;V v;
  for(i=0;i<x->ht->nb;++i)for(v=x->ht->b[i];v;v=v->v)
  if(-1==n&&v->e||v->t==n&&v->a)pv(v);NL;}
-*/
-
-Z void lst(I n,C *cxtname)
-{
-  I i;
-  CX cxt=*cxtname?cxlu(si(cxtname)):Cx;
-  V v;
-  if(0==cxt) {NL; return;}
-  for(i=0;i<cxt->ht->nb;++i)
-    for(v=(V)cxt->ht->b[i];v;v=v->v)
-      if(-2==n&&vInUse(v)||-1==n&&v->e||v->t==n&&v->a)H(" %s",v->s->n);
-  NL;
-}
-
 Z pcx(cx)CX cx;{H(" %s",cx->s->n);}
 Z cxs(){CX cx=Rx;for(;cx=cx->n;)pcx(cx);NL;}
 #define EX(a) dc(v->a),v->a=0
@@ -105,32 +90,20 @@ sys(s)C *s;{C *v;S t;C c,d,*u,*w,*x;I f=0;A a;V q;
  v=strdup(s); s=cl(u=bl(v)),c=*u,*u=0,x=cl(w=bl(s)),d=*w,*w=0;
  switch(*v){case '|':++f,*w=d;case '>':++f;case '*':++f;case '<':vf(v+1,s,f);
    free(v);R;}
- switch(lu(v,cmdsList)){
-  CS(16,xfs())
-  CS(30,x_fs())
-  CS(11,exit(0))
-  CS(13,cxs())
-  CS(9,loadafile(s,0))
-  CS(1,lst(0,s))
-  CS(2,lst(1,s))
-  CS(3,lst(2,s);lst(3,s);lst(4,s))
-  CS(4,lst(5,s))
-  CS(5,--K;sik();NL;++K)
-  CS(6,wa(!*s?-1:*s=='-'?-2:atoi(s)))
+ switch(lu(v,cmdsList)){CS(16,xfs())CS(30,x_fs())CS(11,exit(0))CS(13,cxs())CS(9,loadafile(s,0))
+  CS(1,lst(0,s))CS(2,lst(1,s))CS(3,lst(2,s);lst(3,s);lst(4,s))CS(4,lst(5,s))
+  CS(5,--K;sik();NL;++K)CS(6,wa(!*s?-1:*s=='-'?-2:atoi(s)))
   CS(7,if(*s)Cx=cx(s);else H("%s\n",Cx==Rx?".":Cx->s->n))
   CS(8,srandom(atoi(s)))CS(10,PERR(s,chdir(*s?s:getenv("HOME")));setPWD();)
-  CS(12,if(*s)R APL-s[1]=='p';H(APL?"apl\n":"ascii\n");)
-  CS(14,for(;*s;*w=d,w=bl(s=cl(w)),d=I2,*w=0)expunge(sv(Cx,si(s))))
+  CS(12,if(*s)R APL=s[1]=='p';H(APL?"apl\n":"ascii\n");)
+  CS(14,for(;*s;*w=d,w=bl(s=cl(w)),d=*w,*w=0)expunge(sv(Cx,si(s))))
   CS(15,if(!*s||!isdi(*s)||s[1]&&!isdi(s[1]))R H("%c%c\n",Fs[3],Fs[4]);Fs[3]=s[1]?*s++:'0';Fs[4]=*s)
-  CF(17,sq) 
-  CS(18,H("%s\n",(a=versGet())->p);dc(a)) 
-  CS(19,loadafile(s,1))
+  CF(17,sq)CS(18,H("%p\n",(a=versGet())->p);dc(a))CS(19,loadafile(s,1))
   CS(21,f0(s))CS(22,f1(s))CF(24,Sf)CF(25,Xf)CF(26,Df)CF(27,Gf)CF(29,Ef)
   CS(31,dbg(s,x))
   CS(23,Tf=0;disable()) CS(20,for(;cmdsList[f];++f)H(" %s",cmdsList[f]);NL)
   CS(28,lst(-1,s)) 
-  default:*u=c,*w=d;syst(v);
- }free(v);R;}
+  default:*u=c,*w=d;syst(v);}free(v);R;}
 Z H1(c_i){A z;Q(a->t!=Ct&&a->n,6)W(gd(It,a))DO(a->n,z->p[i]=((UC*)a->p)[i])R(I)z;}
 Z H1(i_c){A z;Q(a->t!=It&&a->n,6)W(gd(Ct,a))DO(a->n,((C*)z->p)[i]=a->p[i])R(I)z;}
 H1(i_f){A z;Q(a->t!=It&&a->n,6)W(gd(Ft,a))DO(a->n,((F*)z->p)[i]=a->p[i])R(I)z;}

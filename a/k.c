@@ -54,7 +54,7 @@ A af4(f,a,b,c,d,v)A f;V v;{I z=b?0:3,x=0,y=0,n=QA(f)&&f->t==Xt+1&&f->r-1<7-z?f->
            case 3:es(e,2,c);case 2:es(e,1,b);case 1:es(e,0,a);}
  R a=ez(ME(e)),xrr(),mf(e),dc(x),dc(y),(A)a;}
 A un(v)A *v;{A a=*v;if(a->c>1||!a->c&&!wr(a))*v=gc(a->t,a->r,a->n,a->d,a->p),dc(a);R *v;}
-extern MZ[]; extern Sf;
+extern MZ[]; extern I Sf;
 Z app(z,w)A *z,w;{A a=un(z);Q(!a->r,7){XA;XW,h=wr==ar,m=(h?*wd:1)+*ad,n=m*tr(--ar,++ad);Q(!a->r,7)
  Q(wr!=ar+h,7)Q(cm(ad,wd+h,ar),8) if(!a->c)Q(m>a->i,16)else
   if(AH+Tt(at,n)+(at==Ct)+4>4*MZ[255&((I*)a)[-1]])*z=ga(at,ar+1,n,ad-1),

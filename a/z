@@ -1,0 +1,21 @@
+u.h - utilities
+k.h - kernel
+f.h - functions
+s.h - system
+
+k.c - kernel
+f.c - funcions
+u.c - user interface
+r.c - parser
+p.c - printer
+s.c - scalar functions
+i.c - dyadic iota
+j.c - indexing
+m.c - mapping
+n.c - nlambda
+o.c - operators
+y.c - system functions
+
+a.c - main(dff)
+b.c - memory(dff)
+q.c - quad divide(orth)

@@ -10,4 +10,5 @@ gcc nsf.c -c -I../ -onsf.o
 gcc o.c -c -I../ -oo.o
 gcc p.c -c -I../ -op.o
 gcc q.c -c -I../ -oq.o
+gcc r.c -c -I../ -or.o
 gcc y.c -c -I../ -oy.o

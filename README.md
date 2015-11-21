@@ -1,11 +1,11 @@
-The focus of this repository is on an earlist version that we could
+The focus of this repository is on the earlist version that we could
 find of the interpreter portion of the A+ system distributed by 
 Morgan Stanley.  In particular, it shows the buddy space management
 system that was eliminated in later versions, and shows more of the
 coding style used by Arthur Whitney.
 
-Note that this version is 32-bit.
-A 64-bit version was not released as open source til 3/27/08.
+Note that this version is 32-bit, and dates from 4/30/1993.
+A 64-bit version was not released as open source til 3/27/2008.
 
 -------------------------------------------------------------------------
 

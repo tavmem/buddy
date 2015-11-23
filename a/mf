@@ -12,4 +12,5 @@ gcc p.c -c -I../ -op.o
 gcc q.c -c -I../ -oq.o
 gcc s.c -c -I../ -os.o
 gcc r.c -c -I../ -or.o
+gcc u.c -c -I../ -ou.o
 gcc y.c -c -I../ -oy.o

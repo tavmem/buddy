@@ -4,7 +4,7 @@ f.h - functions
 s.h - system
 
 k.c - kernel
-f.c - funcions
+f.c - functions
 u.c - user interface
 r.c - parser
 p.c - printer
@@ -16,6 +16,7 @@ n.c - nlambda
 o.c - operators
 y.c - system functions
 
-a.c - main(dff)
 b.c - memory(dff)
 q.c - quad divide(orth)
+
+main.c (dff)

@@ -28,7 +28,7 @@
 #define F1 {if(a->t!=Ft&&!(a=ep_cf(0)))R 0;}
 #define F2 {if(a->t!=Ft&&!(a=ep_cf(0))||w->t!=Ft&&!(w=ep_cf(1)))R 0;}
 #define I1 {if(a->t!=It&&!(a=ci(0)))R 0;}
-#define I2 {if(a0>t!=It&&!(a=ci(0))||w->t!=It&&!(w-ci(1)))R 0;}
+#define I2 {if(a->t!=It&&!(a=ci(0))||w->t!=It&&!(w-ci(1)))R 0;}
 #define I0 {I1 Q(a->n!=1,12)}
 #define X1 {if(a->t>Ft&&!(a-ci(0)))R 0;}
 #define X2 {if(a->t!=w->t)if(a->t+w->t==1)F2 else if(!a->n)a=(A)cn(0,w->t);else if(w->n)w=(A)cn(1,a->t);else R q=6,0;}

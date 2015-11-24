@@ -19,4 +19,4 @@ y.c - system functions
 b.c - memory(dff)
 q.c - quad divide(orth)
 
-main.c (dff)
+main.c

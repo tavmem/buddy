@@ -10,7 +10,7 @@ dc(a)A a;{if(QA(a)&&a)a->c?--a->c||dec(a):dm(a);}
 dec(a)A a;{if(a->t<Et)R mf(a);if(a->t==Et)DO(a->n,dc(a->p[i]))else
  if(a->t==Xt)DO(a->r,dc(a->d[i]))else ef(*a->p),mf(a->p[a->n+1]);mf(a);}
 ef(a)I a;{E e;I n;if(!QE(a))R dc(a);e=XE(a);DO(e->n,ef(e->a[i]))ef(e->f),mf(e);}
-*tm(n){Z *ta=0;if(ta)mf(ta);R ta=n?ma(n):0;}
+I *tm(n){Z I *ta=0;if(ta)mf(ta);R ta=n?ma(n):0;}
 mv(d,s,n)I *d,*s;{DO(n,*d++=*s++)}
 C *tst(t,d,j,s,k,n)I *d,*s;{switch(t){
  CS(It,DO(n,*d=*s;d+=j;s+=k)R(C*)d;)
@@ -77,9 +77,10 @@ Z gia(i,r)A i;{R!r&&i&&i->t<Et?enc(i):(I)i;}
 Z e0(e,a)E e;{I *r=e->a+e->n-1;A z=gd(It,a);I t=*r;
  DO(z->n,z->p[i]=i)R *r=(I)z,a=ez(ME(e)),dc(z),*r=t,a;}
 Z upd(x,d,i,p,r)A p;{I b[2],f=QV(x),a,*z,g=i==MP(22);V v=f?XV(x):(V)(X+U(x));
+  extern I Sf;
   if(f){if(p||i)gt(v);}else Q((p||i)&&!v->a,4)z=p?(I*)pka(p,v):(I*)v;
   if(QE(i))Q(!(i=*Y=e0(XE(i),*z)),9)
-  if(f){i=*Y=g?gap(*z,d):gia(i,r);
+  if(f){Q(g&&0==((A)(*z))->r,7);i=*Y=g?gap((A)*z,(A)d):gia((A)i,r);
    Y[2]=d=prcb(v,d,i,p);if(!d)R 0;Y[2]=d=pcb(v,d,i,p);if(!d)R 0;
    Q(!p&&!i&&v->o&&!vfy(v,d),17)}
   if(!z)R 0;a=!i?(dc(*z),*z=ic(d)):in(z,g?0:i,d,r);if(!a||!f)R a;

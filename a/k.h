@@ -85,7 +85,7 @@ extern I Df,Gf,Sf,Tf,Xf,Ef;
 #endif
 
 #define T(x) ((x)<<(t+2&3))
-#define Tr(t,x) ((x)<<(t+2&3))
+#define Tt(t,x) ((x)<<(t+2&3))
 #define Q(x,n) {if(x)R q=n,0;}
 #define W(x) {z=(A)(x);}
 #define It 0L

@@ -2,6 +2,7 @@
 char what_atw_a_main_c[]="@(#) $Id: main.c,v 1.3 1992/09/04 16:44:31 dff Exp $";
 #include <string.h>
 #include <stdio.h>
+#include <errno.h>
 extern long strtol();  /* should be declared in a strtol.h */
 extern void pr();
 extern int ai();
@@ -59,6 +60,94 @@ C **argv;
        for (;;) getm();                            /* main loop */
 }
 
+Z I argfirst(argc,argv){R 0;}
+
+typedef void (*VPF) ();
+Z FILE *_Warnfp = (FILE *)2;
+Z void _DefaultWarnFunc(char *s){
+  fputs(s, _Warnfp);
+  /* Lexa redefines fflush in stdio.h which results in an unresolved symbol */
+  #if defined(__edgfe) && defined(fflush)
+  #undef fflush
+  #endif
+  fflush(_Warnfp);}
+static VPF _WarnFunc = _DefaultWarnFunc;
+#define	MAXERRSIZE	BUFSIZ
+
+Z C *fixit(int errnum, char *s, char r[])
+{
+  char *z, *p = r, *cp = s, *str, ctimebuf[60];
+  //static struct timeval tp;
+  //static struct timezone tzp;
+
+  while (cp && *cp != (char) NULL) {
+    if (p == &r[MAXERRSIZE - 1])
+      return ("bark!\n");
+    if (*cp == '%')
+      switch (*(cp + 1)) {
+
+	/* quoted `%' */
+      case '%':
+	*p++ = *cp++;
+	*p++ = *cp++;
+	break;
+
+	/* error string a la syslog(3) */
+      case 'm':
+	if (errnum < 1 || errnum > sys_nerr)
+	  str = "unknown error";
+	else
+#ifdef HAVE_STRERROR
+          str = strerror(errnum);
+#else
+	  str = sys_errlist[errnum];
+#endif
+	for (z = str; *z != (char) NULL &&
+	     p < &r[MAXERRSIZE - 1]; *p++ = *z++);
+	cp += 2;
+	break;
+
+    
+	/* timestamp */
+//     case 't':
+//	if (gettimeofday(&tp, &tzp) < 0)
+//	  str = "(time?) ";
+//	else {
+//         #if defined(__SUNPRO_C)
+//          str = ctime_r(&tp.tv_sec,ctimebuf,sizeof(ctimebuf));
+//         #else
+//          /* For linux ctimebuf must be at least 26 */
+//          str = ctime_r(&tp.tv_sec,ctimebuf);
+//        #endif
+//	  str[19] = '\0';
+//	}
+    
+
+	for (z = str + 4; *z != (char) NULL &&
+	     p < &r[MAXERRSIZE - 1]; *p++ = *z++);
+	cp += 2;
+	break;
+
+	/* normal for _doprnt */
+      default:
+	*p++ = *cp++;
+	break;
+      }
+    else
+      *p++ = *cp++;
+  }
+  *p = (char) NULL;
+  return (r);
+}
+
+void Warn(char *fmt,...){char r[MAXERRSIZE];char _ErrBuf[2 * MAXERRSIZE];
+ if(_WarnFunc != (VPF) NULL) { int errnum = errno;va_list ap;
+ fmt=(C*)fixit(errnum, fmt,r);
+ //va_start(ap, fmt);
+ (void)vsprintf(_ErrBuf, fmt, ap);
+ //va_end(ap);
+ (_WarnFunc) (_ErrBuf); }R;}
+
 Z I parseargs(argc, argv)
 register I argc;
 register C *argv[];
@@ -100,7 +189,7 @@ register C *argv[];
                                       isinvalid = 1;
                               }
                       }
-                      else ignaore_dup(c);
+                      else ignore_dup(c);
                       break;
               default:
                       Warn("%t usage: -%c is an unknown option\n", c);

@@ -431,7 +431,7 @@ static A ls_c(a0,b,m,n,p,monadic)
 
       if ( j != Ipq(j) ) {
         s          = Vc(j);
-        Vc(j)      = Vd(Ipq(j));
+        Vc(j)      = Vc(Ipq(j));
         Vc(Ipq(j)) = s;
       }
 /*
@@ -442,7 +442,7 @@ static A ls_c(a0,b,m,n,p,monadic)
       for ( i0 = j + 1 ; i0 < m ; ++i0 ) {
         Vc(j) = Vc(j) + Ma(i0,j) * Vc(i0);
       };
-      Vc(j) = -Vc(j) / Mj(j,0);
+      Vc(j) = -Vc(j) / Mh(j,0);
 
       s = Mh(j,0) + Mh(j,1);
 

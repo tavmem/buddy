@@ -1,7 +1,7 @@
 char what_a_f_c[] = "@(#) $Id: f.c,v 1.24 1993/04/16 21:59:15 maus Exp $";
 #include "f.h"
 extern I *k,ind(),ran(),not(),neg(),aab(),sgn(),cln(),flr(),rec(),aen(),aln(),pit(),cir(),c_s(),s_c(),dtr(),
- ds(),rs(),sc(),os(),ic(),is(),sqr(),dea(),mat(),ncd(),dcd(),dis(),raz(),prt(),pct(),pen(),gz(),nn(),vv(),
+ ds(),rs(),sc(),os(),ic(),is(),sqr(),dea(),mat(),ncd(),dcd(),dis(),raz(),prt(),pct(),pen(),gz(),
  dep(),mat(),fnd(),mem(),upg(),dng(),mmd(),dmd(),det(),pic(),bi(),bo(),mth(),dth(),exm(),sg(),cv(),rot(),bin(),dot(),undot();
 Z t,u,v;
 I rsh(a,r,d)A a;I *d;{R g=rsh,a->c==1?(mv(a->d,d,a->r=r),ic(a)):(I)gc(a->t,r,a->n,d,a->p);}
@@ -16,7 +16,7 @@ Z I cl(a,w,i)A a,w;I i;{A z;X2{XA;XW;I r,n,d[9];i=!ar&&!wr||i==23;
  if(ar&&wr)if(ar==wr)Q(cm(ad+!i,wd+!i),8)else{
   Q(i||wr-ar!=1&&ar-wr!=1,7)n=wr<ar;Q(cm(ad+n,wd+!n,ar-n),8)}
  if(wr<ar)n=1,mv(d+i,ad,r=ar);else mv(d+i,wd,r=wr),n=i||ar<wr?1:*ad;
- if(i)++r,*d=1;*d+=n;u=!ar?(an=tr(r=1,d+1),1):!wr?(wn=tr(r-1,k+1),2):0;
+ if(i)++r,*d=1;*d+=n;u=!ar?(an=tr(r=1,d+1),1):!wr?(wn=tr(r-1,d+1),2):0;
  W(ga(t=wt,r,an+wn,d))v=an;C2(m2)}}
 G1(I,r0){I *p=r+n;for(;r<p;)*--p=*w++;}
 G1(C,r1){C *p=w+T(n);for (;w<p;)r=tmv(t,r,p-=T(v),v);}
@@ -56,19 +56,19 @@ Z S as(a)A a;{R!a->r&&sym(a)?XS(*a->p):0;}
 Z H1(mrf){S v=as(a);Q(!v,9)R ic(gt(sv(Cx,v)));}
 Z H2(drf){S c=as(a),v=as(w);Q(!c||!v,9)R ic(gt(sv(cxi(c),v)));}
 I(*P1[])()={ st,ts,ic,sgn,cln,flr,neg,rec,aab,enc,
-               dis, nn, nn,upg,dng,aen,aln,ran,tra,iot,
+               dis,  n,  n,upg,dng,aen,aln,ran,tra,iot,
                siz,sha,rav,not,rev, sg,out,upg,dng,dep,
-               c_s,s_c, nn, nn, vv,pct,raz,mmd,rdc,pit,
+               c_s,s_c, n, n, n,pct,raz,mmd,rdc,pit,
                sc,sc,sc,sc,sc,sc,rs,rs,rs,rs,
-               rs,rs,nn,nn,nn,nn,nn,nn,nn,nn,
-               nn,nn,nn,nn,nn,nn,nn,bi,nn,nn,
+               rs,rs, n,n,n,n,n,n,n,n,
+               n,n,n,n,n,n,n,bi,n,n,
                mth,e1,gz,cp,mrf,undot
 };
 I(*P2[])()={ ds,cv,ds, ds, ds, ds, ds, ds, ds, ds,
                ds, ds, ds, ds, ds,sqr, ds,dea,dtr,fnd,
-               ind,rho, cl, cl,rot, td, td,bin,nn,mat,
+               ind,rho, cl, cl,rot, td, td,bin,  n,mat,
                ncd,dcd,cmp,xpn,mem,pen,pic,dmd,prt,cir,
-                nn, nn, nn, nn, nn, nn, nn, nn, nn, nn,
+                n, n, n, n, n, n, n, n, n, n,
                os,os,os,os,os,os,is,bo,is,is,
-               dth,e2,ic,nn,drf,dot
+               dth,e2,ic,n,drf,dot
 };

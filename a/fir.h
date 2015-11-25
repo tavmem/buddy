@@ -113,7 +113,7 @@ is not-NULL, it also check for a match to a particular char string. */
 
 #define IsNull(aobj) ( NULL==aobj || Et==aobj->t && 0==aobj->n && 1==aobj->r)
 
-/* Define iszero macro aor AIX machines */
+/* Define iszero macro for AIX machines */
 #ifdef _AIX
 #ifndef iszero
 #define iszero(X)   (X==0.0)

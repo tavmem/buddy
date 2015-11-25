@@ -8,10 +8,11 @@ Z rvl(a){E e;R pvl(a)||QE(a)&&(e=XE(a),e->n==1&&e->f==MP(22)&&pvl(*e->a));}
 Z C *ps[]={"ws?","op?","var?","fn?","fninshed?","assign?","naked [?",
  "max # args 9","valence?",":header?","List too ling?","too many locals?"};
 Z prr(i,j){extern G;if(!G)if(H("PARSE "),i==2?pa(j):0,H(": %s\n",ps[i]),Qs)
- if(QS(Qs))H("%s\n",XS(Qs)->n);else sd(),dc(Qs);for(;*r;)mf(*r--);tc(r);}
+ if(QS(Qs))H("%s\n",XS(Qs)->n);else sk(),dc(Qs);for(;*r;)mf(*r--);tc(r);}
 Z E mm(n){if(*++r=(I)ma(n))R(E)*r;--r,prr(0);}
 
-#define HTHASH(ht,s) ((ht)->b+(((ht)->nb-1)&ha(((unsigned)(s))>>3)))
+unsigned long hafn(unsigned long key){R key^key>>11;}
+#define HTHASH(ht,s) ((ht)->b+(((ht)->nb-1)&hafn(((unsigned)(s))>>3)))
 
 Z unsigned Ha(key)unsigned key;{R key^key>>11;}
 HT hti(nb){HT ht=(HT)malloc((2+nb)*sizeof(I));
@@ -21,9 +22,9 @@ CX cxi(s)S s;{CX cx,a=Rx;if(s==a->s)R a;for(;cx=a->n;a=cx)if(s==cx->s)R cx;
 a->n=cx=(CX)malloc(sizeof(*cx));cx->ht=hti(HTSIZE);cx->s=s;cx->n=0;R cx;}
 
 V vi(s,cx)S s;CX cx;{HT ht=cx->ht;V v,vh;V *bp=(V *)HTHASH(ht,s);
-for(v=*bp;v;v=v->v)if(s==v->s)R v;
-v=(V)malloc(sizeof(*v));bzero(v,sizeof(*v));v->s=s;v->cx=cx;v->z=1;++ht->ni;
-if(vh=*bp) {v->v=vh->v;vh->v=v;} else *bp=v;R v;}
+ for(v=*bp;v;v=v->v)if(s==v->s)R v;
+ v=(V)malloc(sizeof(*v));bzero(v,sizeof(*v));v->s=s;v->cx=cx;v->z=1;++ht->ni;
+ if(vh=*bp) {v->v=vh->v;vh->v=v;} else *bp=v;R v;}
 
 CX cx(s)C *s;{R *s!='.'?cxi(si(s)):Rx;}
 
@@ -37,7 +38,7 @@ Z mr(){R *t&&*t!=';'&&*t!=')'&&*t!=']'&&*t!='}'&&*t!=ELSE;}
 Z rt(g){I f,a,b,c=0;if(!mf())prr(4);switch(f= *t++){
  case MN(5):case MN(3):CS(MN(2),*++K=U(f);u=u;if(a=rt(0),q)prr(3);b=mr()?re():nl;
   if(*t==ELSE){u=++t;*K=1;c=re();}--K;R me(c?3:2,f,a,b,c))
- CS('[',prr(6))CS('(',--t;arl(MN(7)))CS('{',--t;a=rl(MN(1)))
+ CS('[',prr(6))CS('(',--t;a=rl(MN(7)))CS('{',--t;a=rl(MN(1)))
  default:y=ty(a=f);} if(!y)for(;*t==';';)a=rl(a);R a;}
 #define RLBLEN 999
 #define rlbf bfree(b==r==rlb?0:b)
@@ -66,7 +67,7 @@ Z in(s,b,r)I *b;{for(;r--;)if(b[r]==s)R 1;R 0;}
 Z lk(s,f)A f;{I i;if(!f)R 0;if(f->r>1)DO(f->r,if(f->d[i]==s)R ML(i))
  for(i=f->n;--i;)if(f->p[i]==s)R ML(-i);R 0;}
 Z str(t,r,b,n,p)I *t,*b,*p;{I f;if(f=t[-1]==')'&&t[-3]==';')--t;
- do if(QS(*--t)&&!in(*t,b,r)&&!in(*t,p,n)){if(n==999)ppr(11);p[n++]=*t;}while(f&&*--t==';');R n;}
+ do if(QS(*--t)&&!in(*t,b,r)&&!in(*t,p,n)){if(n==999)prr(11);p[n++]=*t;}while(f&&*--t==';');R n;}
 Z rz(b)I *b;{I i;A f;for(r=t=b;*r;++r)if(QS(*r))*r=(i=lk(*r,Qs?Qs:*X))?i:
  MV(vi(XS(*r),Cx)); R re();}
 extern V sv();
@@ -107,4 +108,4 @@ L:r=t-b;if(!r)prr(9);
  f=(A)(d?v->e:v->a); i=f&&QA(f)&&f->t>Xt?f->p[f->n]:0;
  z=ga(Xt,r,n+3,b),z->t+=y,z->n-=3,frep(z),z->p[n]=i,z->p[n+2]=(I)Cx;Qs=(I)z;
  mv(z->p,p,n),*++K=(I)z,*z->p=rz(j+1),--K;
- R d?sad(v,z):(v->t=yset(MV(v),z)),nl;}}
+ R d?sad(v,z):(v->t=y,set(MV(v),z)),nl;}}

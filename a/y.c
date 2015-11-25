@@ -28,7 +28,7 @@ Z C*afi(s)C *s;{Z C ap[]=".:/usr/local/a+/lib:/usr/local/lib/a:/common/a:/u/a";
 Z C*mfi(s,i)C *s;{C *t=fi(s,"m"),j=R_OK|(i?W_OK:0),*r=pfind("MPATH",".",t,j);
  if(!r)r=pfind("MPATH",".",s,j);if(!r)perr(t);R r;}
 
-C *doloadafinle(s,u) C *s;{   /*silent version loadafile */
+C *doloadafile(s,u) C *s;{   /*silent version loadafile */
  C r[MAXPATHLEN],*t=afi(s);
  CX x=Cx; I m=APL,c; FILE *f;
  if(!t)R (C *)0;
@@ -43,10 +43,10 @@ loadafile(s,u) C *s;{         /* now a cover for doloadafile */
  if (0==rc)R perr(s);else free((void *) rc);
  R 0;}
 
-ai(n){sgi();mi();wi();if(!tmp(n<<20))R 0;yInstall();nsfInstall();R 1;}
+ai(n){sgi();wi();wi();if(!tmp(n<<20))R 0;yInstall();nsfInstall();R 1;}
 mpi(s,i)C *s;{I z;C *t;Q(!s||i<0||i<2||!(t=mfi(s,i&1)),9)
  ERR(t,z=open(t,i&1?O_RDWR:O_RDONLY))R nmap(z,i);}
-Z pw(f,s,n)C *s;{I t;do t=write(f,s,n);while(s+=t,t!=-1&&(n-=t));fsych(f);R t;} /* IBM write fix */
+Z pw(f,s,n)C *s;{I t;do t=write(f,s,n);while(s+=t,t!=-1&&(n-=t));fsync(f);R t;} /* IBM write fix */
 Z mo(s,z)A z;C *s;{I f,t=z->t,c,n;C r[MAXPATHLEN],*p;Q(Ct<t,6)
  s=rindex(s,'.')>rindex(s,'/')?s:fi(s,"m");
  strcpy(r,s),strcat(r,"!@#");
@@ -60,7 +60,7 @@ Z fzr(f,n){I j=getpagesize(),k=lseek(f,0,2);n=((n+j-1)/j)*j;
  for(;n<k;n+=j)lseek(f,n,0),write(f,&f,1);}
 Z items(n,z){C *s=cs(z);Z struct a a;I f,t,m,j,w=n!=-1;Q(!s,9)
  ERR(s,f=open(fi(s,"m"),w?O_RDWR:O_RDONLY))ERR(s,read(f,&a,AH))Q(!a.r,7)
- m=*a.d;j=a.i;if(m>j)j=m;if(w){t=a.t;if(n==-2)fxr(f,AH+T(a.n)+(t==Ct));else{
+ m=*a.d;j=a.i;if(m>j)j=m;if(w){t=a.t;if(n==-2)fzr(f,AH+T(a.n)+(t==Ct));else{
   a.i-n,m=n*tr(a.r-1,a.d+1);if(n<*a.d)*a.d=n,a.n=m;lseek(f,0,0);
   ERR(s,write(f,&a,AH))ERR(s,flen(f,AH+T(m)+(t==Ct)))}}R close(f),j;}
 Z rd(f,s,n)C *s;{C *t=s+n;I k;for(;s<t;s+=k)PERR("",k=read(f,s,n))R 1;}
@@ -69,7 +69,7 @@ H1(ri){I0;{A z;struct a b;I d=*a->p,t;
  W(gd(t=b.t,&b))R rd(d,z->p,T(b.n))?(I)z:(dc(z),0);}}
 Z vf(a,b,i)C *a,*b;{A z;V v;I f,t;FILE g,*h;
  if(!isal(*a)||!b)R H("incorrect\n");v=vi(si(a),Cx);switch(i){
- case 3:if(h=popen(b,"w"))g=*stdout,*stdout=*h,pa(gt(v)),NL,*h=*stdout,pclocse(h),*stdout=g;else peff("pipe?");R;
+ case 3:if(h=popen(b,"w"))g=*stdout,*stdout=*h,pa(gt(v)),NL,*h=*stdout,pclose(h),*stdout=g;else perr("pipe?");R;
  case 2:if(!QA(z=(A)v->a)||!z||!mo(b,z))R H("can't write%s\n",a);}dc(v->a),v->a=m1(b,1);} 
 Z lst(n,s)C *s;{I i;CX x=*s?cx(s):Cx;V v;
  for(i=0;i<x->ht->nb;++i)for(v=x->ht->b[i];v;v=v->v)
@@ -78,7 +78,7 @@ Z pcx(cx)CX cx;{H(" %s",cx->s->n);}
 Z cxs(){CX cx=Rx;for(;cx=cx->n;)pcx(cx);NL;}
 #define EX(a) dc(v->a),v->a=0
 exx(v)V v;{R v->o?0:(EX(a),EX(f),EX(c),EX(p),EX(q),EX(cd),EX(rff),EX(rfc),
-                     EX(rpf),EX(rpc),EX(scd),EXrmd(v),dst(v));}
+                     EX(rpf),EX(rpc),EX(scd),rmd(v),dst(v));}
 Z expunge (v)V v;{if (v->o) H("%s: is bound\n",v->s->n); else exx(v);}
 C *cmdsList[]={"vars","fns", "ops","xfs","si","wa", "cx",  "rl",  "load",  "cd",
                "off", "mode","cxs","ex", "pp","sfs","stop","vers","loadrm","cmds",
@@ -121,7 +121,4 @@ H1(s_c){A z;XA;I k;int m=0;C *s;
  Q(an&&!sym(a),6)DO(an,if(m<(k-strlen(XS(a->p[i])->n)))m=k)W(ga(Ct,ar+a,an+m,ad))z->d[ar]=m;s=(C*)z->p;
  DO(an,sprintf(s,"%-*s",m,XS(a->p[i])->n);s+=m)R(I)z;}
 I cn(i,t){I a=Y[i],z=(I)gd(t,a);R dc(a),Y[i]=z;}
-void yInstall(){
- install(items,"_items",9,2,9,0);
- R;
-}
+void yInstall(){install(items,"_items",9,2,9,0);R;}

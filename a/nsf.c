@@ -117,7 +117,7 @@ A ep__grcb(a) A a;
   V v=av(a);
   if(!v) ERROUT(ERR_DOMAIN);
   if(!v->rff)R 0;
-  R zgv(Et,2),*z->p=ic(v->rff),z->p[1]=ic(v->rfc),(A)z;
+  R z=gv(Et,2),*z->p=ic(v->rff),z->p[1]=ic(v->rfc),(A)z;
 }
 
 ENTRYPOINT
@@ -221,7 +221,7 @@ A ep_alldep(a) A a;
   V v=av(a), *vvec, xv; I *l, idx=0, count=0, i, j, notin, **lvec;
   A result; struct buff *pb;
   if (!v) ERROUT(ERR_DOMAIN);
-  if (0==(l=v->l)) R (A)gx();
+  if (0==(l=v->l)) R (A)gz();
   pb=buffalloc();
   for (l=v->l;l;l=(I*)*l) {
     buffputint(pb,l); count++;
@@ -320,7 +320,7 @@ void minorReleaseSet(n) I n;
 Z A versVal=(A)0;
 
 
-A vdrsGet()
+A versGet()
 {
   R (A)((versVal==(A)0)?gsv(0,"Version not set"):ic(versVal));
 }
@@ -476,7 +476,7 @@ A ep_wa(a) A a;
   if (It==a->t || Ft==a->t) {
     if (1 != a->n) ERROUT(ERR_LENGTH);
 #ifdef _AIX
-    if (Ft==a->t) k=*I)nerest(*(F *)(a->p)); else k=*a->p;
+    if (Ft==a->t) k=*I)nearest(*(F *)(a->p)); else k=*a->p;
 #else
     if (Ft==a->t) k=irint(*(F *)(a->p)); else k=*a->p;
 #endif
@@ -547,7 +547,7 @@ Z A nl__sfs()
   C **s=xs; I count=0; A result;
 
   for(;*++s;)if(**s=='_'&&(*s)[1]==')') ++count;
-  result=vg(Et, count);
+  result=gv(Et, count);
   for(count=0,s=xs;*++s;)
     if (**s=='_'&&(*s)[1]=='_') result->p[count++]=MS(si(*s));
   R result;
@@ -668,14 +668,14 @@ A ep_ex(a) A a;
   else R gi(1);
 }
 
-ENTRYPOINT /* exitpint? :^) */
+ENTRYPOINT /* exitpoint? :^) */
 void ep_exit(rc) I rc;
 {
   exit(rc);
 }
 
 Z C pwd[MAXPATHLEN+8]="PWD=";
-setPWD(){getwd(pwd+4);putenf(pwd);}
+setPWD(){getwd(pwd+4);putenv(pwd);}
 
 ENTRYPOINT
 A ep_cd(a) A a;

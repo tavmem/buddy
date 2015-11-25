@@ -1,6 +1,6 @@
 char what_a_k_c[] = "@(#) $Id: k.c,v 1.67 1993/04/30 00:54:13 atw Exp $";
 #include "f.h"
-Z I MY[2001];Z struct _cx rx;CX Rx,Cs;I Xf;
+Z I MY[2001];Z struct _cx rx;CX Rx,Cx;I Xf;
 I nl,sq=2,q,(*g)(),*Y,*X,*XY,*K=MY;
 extern HT hti();
 ki(){A a;X=Y=XY=(K=MY)+2000,*X=*K=0,*++K=0,Cx=Rx=&rx,
@@ -29,7 +29,7 @@ I tr(r,d)I r,*d;{I n,*t;if(!r)R 1;for(t=d+r,n= *d;++d<t;n*= *d);R n;}
 tr1(r,d)I r,*d;{F s=1;I t;if(r<0)DO(-r,s*=*d)else DO(r,if(s*=t=*d++,t<0)R -1)R s>0x7FFFFFFF?-1:(I)s;}
 #define GA(_t,_r,_n,x) {I _f=_t==Ct;A z=(A)mab(_f+AH+Tt(_t,_n));z->c=1,z->t=_t,z->r=_r,z->n=_n;x;if(_f)((C*)z->p)[_n]=0;R z;}
 A gm(t,m,n)GA(t,2,m*n,*z->d=m;z->d[1]=n)        A gv(t,n)GA(t,1,n,*z->d=n)
-A gd(t,a)A a;GA(t,a->r,a->n,mv(z->d,a->d,a->r)) A ga(t,r,n,d)GA(t,r,n,vm(z->d,d,r))
+A gd(t,a)A a;GA(t,a->r,a->n,mv(z->d,a->d,a->r)) A ga(t,r,n,d)GA(t,r,n,mv(z->d,d,r))
 A gc(t,r,n,d,p)GA(t,r,n,mv(z->d,d,r);tmv(t,z->p,p,n))
 A gi(i)I i;GA(It,0,1,*z->p=i)A gs(t)GA(t,0,1,1) A gf(f)F f;GA(Ft,0,1,*(F*)z->p=f)
 
@@ -47,7 +47,7 @@ I fa(f,a,w){I z,i,n=w?2:1;if(w)*--Y=w;*--Y=a;if(QA(f))ic(*--Y=f),z=af(++n);
  else{i=U(f);EQ(0,QX(f)?PX(i,n):n==2?(*P2[i])(*Y,Y[1],i):(*P1[i])(*Y,i))}
  DO(n,dc(*Y++))R z;}
 
-Z es(e,n,a)E e;{e->a[n]=a?a:(I)nl;}Zms(s){A z=gs(Et);R *z->p=MS(s),(I)z;}
+Z es(e,n,a)E e;{e->a[n]=a?a:(I)nl;}Z ms(s){A z=gs(Et);R *z->p=MS(s),(I)z;}
 A af4(f,a,b,c,d,v)A f;V v;{I z=b?0:3,x=0,y=0,n=QA(f)&&f->t==Xt+1&&f->r-1<7-z?f->r-1:0;
  E e=(E)ma(2+n);e->n=n,e->f=(I)f;if(n>4-z)if(y=ms(v->s),x=ms(v->cx->s),z)b=x,c=y;
  switch(n){case 6:es(e,5,y);case 5:es(e,4,x);case 4:es(e,3,d);
@@ -91,7 +91,7 @@ Z upd(x,d,i,p,r)A p;{I b[2],f=QV(x),a,*z,g=i==MP(22);V v=f?XV(x):(V)(X+U(x));
     val(v);}
   if(v->o)xup(v,d,i,p,r);R 1;}
 set(x,a){I r;R *--Y=a,*--Y=0,*--Y=0;r=upd(x,a,0,0,0),dc(Y[2]),Y+=3,r;}
-aset(v,d,i,p){I r;Y-=3,*Y=i?ic(i):0,r=upd(mV(v),Y[2]=d,i,p,0);dc(Y[2]),dc(*Y),Y+=3;R xrr(),r;}
+aset(v,d,i,p){I r;Y-=3,*Y=i?ic(i):0,r=upd(MV(v),Y[2]=d,i,p,0);dc(Y[2]),dc(*Y),Y+=3;R xrr(),r;}
 Z lst(n,p,w)I *p;A w;{Q(w->r>1,7)Q(w->r&&w->n!=n,8)
  DO(n,if(!set(p[i],pck(i*w->r,w)))R 0)DO(n,if(QV(p[i]))XV(p[i])->z=1)R 1;}
 #define Q1(x,n) if(x){R mf(va),q=n,0;}

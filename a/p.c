@@ -5,6 +5,7 @@ char what_a_p_c[] = "@(#) $Id: p.c,v 1.32 1993/04/22 20:22:38 maus Exp $";
 #include "fir.h"
 #undef min
 #undef max
+#define iszero(x) (x==0.0)
 
 #define PC putchar
 Z C *ns[]={":=","else","if","while","do","case","time","","@","each",0};

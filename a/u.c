@@ -45,7 +45,7 @@ A SymbolTableHashChainLengths()
 }	
 
 V sv(c,s)CX c;S s;{C *t=index(s->n,'.'),b[99];
- if(t)*t=0,strcpy(b,s->n),*t='.',c=csi(si(b)),s=si(t+1);R vi(s,c);}
+ if(t)*t=0,strcpy(b,s->n),*t='.',c=cxi(si(b)),s=si(t+1);R vi(s,c);}
 Z ispu(c){R c==':'||c==';'||c=='('||c==')'||c=='{'||c=='}'||c=='['||c==']';}
 A issp(c){R c==' '||c=='\n'||c=='\t'||c==12;}isal(c){R c>='a'&&c<='z'||c>='A'&&c<='Z'||c=='_';}
 isdi(c){R c>='0'&&c<='9';}Z isan(c){R isal(c)||isdi(c);}
@@ -61,14 +61,14 @@ tc(t)I *t;{for(;t>tb;)if(!ispu(*--t))dc(*t);longjmp(J,-2);}
 Z C *ts[]={"wsfull","stack","undEfined","MAX args: 9","( nesting too deep"};
 Z trr(q,s)C *s;{if(!G)H("TOKEN: %s %s\n",q==2?s:"",ts[q]);tc(t);}
 Z brr(c){if(!G)H("TOKEN: open %c\n",c);tc(tb);}
-Z rs(v,i)C *v;{I t=0;C c=*s;*s=0;if(i&&(*v=='\312'||(t=ip(v)))){
+Z rs(v,i)C *v;{I t=0;C c=*s;*s=0;if(i&&(*v=='\312'||(t=pi(v)))){
  if(c=='/'||c=='\\'||c=='.'&&!isan(s[1])){*s++=c;
   if(c=='.'&&*s&&!ispu(*s)&&!issp(*s))++s;c=*s,*s=0,t=pi(v);}if(!t)trr(2,v);}
  else{if(i==1)trr(2,v);t=MS(si(v));}R *s=c,t;}
 Z rq(c){while(*++s&&((c=='"'?*s=='\\':*s==c&&s[1]==c)?(I)++s:*s!=c));R *s;}
 Z acp(d,s)C *d,*s;{C *t=d;for(;*d=*s;++d,++s)if(*s=='\'')++s;R d-t;}
 Z ccp(d,s)C *d,*s;{C *t=d;for(;*d=*s;++d,++s)if(*s=='\\')if(*++s=='n')*d=10;else
- if(!isdi(*s))*d=*s;else{I j=3,n=*s-'0';for(;isd(*++s)&&--j;n=n*8+*s-'0');--s,*d=n;}R d-t;}
+ if(!isdi(*s))*d=*s;else{I j=3,n=*s-'0';for(;isdi(*++s)&&--j;n=n*8+*s-'0');--s,*d=n;}R d-t;}
 I gsv(i,s)C *s;{I n=strlen(s);A z=gv(Ct,n);if(!i)strcpy(z->p,s);
  else n=z->n=*z->d=i==2?ccp(z->p,s):acp(z->p,s);if(n==1)z->r=0;R(I)z;}
 Z gvs(t,n,s){R(I)gc(t,n!=1,n,&n,s);}
@@ -122,7 +122,7 @@ Z C *es[]={"sotp","interrupt","wsfull","stack","value","valence","type","rand",
  "length","domain","index","mismatch","nonce","maxrank","non-function","parse","maxitems","invalid"};
 xrr(){if(q>0)qs=es[q];q=0;}
 Z prr(i,a)A a;{q=0;i==2?H("%d",a):pa(QA(a)&&a&&a->t>=Xt?*a->d:(I)a);H(": %s\n",i<0?qs:es[i]);}
-C *qs;err(i,a){q=i;if(!Ef||G&&i)longjmp(J,-3);Tf=1;stdinFlagSet(Tf);prr(i,a);us();R 0;}
+C *qs;err(i,a){q=i;if(!Ef||G&&i)longjmp(J,-3);Tf=1;stdinFlagSet(Tf);prr(i,a);ui();R 0;}
 perr(s){perror(s),fflush(stdout);}
 
 Z tok(){jmp_buf b;CX c=Cx;I *j=J,*k=K,z=setjmp(J=b)?0:ra(bal(0));R K=k,Cx=c,J=j,z;}

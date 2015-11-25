@@ -16,7 +16,7 @@
 #define Vol
 #include <sys/termios.h>
 //#include <sys/filio.h>
-#define SH(x) strlen(springf(b,s,x))
+#define SH(x) strlen(sprintf(b,s,x))
 #endif
 
 /* HP like AIS

@@ -59,5 +59,5 @@ ea(f,a,w)A a,w;{A z,*p;I at=a->t,k=a->r?Tt(at,1):0,wt,j=0;C *ap=(C*)a->p,*wp;
 extern F sqrt(),sin(),cos(),tan(),asin(),acos(),atan(),sinh(),cosh(),tanh(),asinh(),acosh(),atanh();
 H2(cir){R ds(a,w,17);}F pif(i,x)F x;{switch(i){default:Q(1,9);
 CS(0,R sqrt(1-x*x))CS(4,R sqrt(1+x*x))CS(-4,R sqrt(-1+x*x))CS(8,R sqrt(-1-x*x))CS(-8,R -sqrt(-1-x*x))
-CS(1,R sin(x))CS(2,R cos(x))CS(3,R tan(x))CS(-1,R awin(x))CS(-2,R cos(x))CS(-3,R atan(x))
+CS(1,R sin(x))CS(2,R cos(x))CS(3,R tan(x))CS(-1,R asin(x))CS(-2,R cos(x))CS(-3,R atan(x))
 CS(5,R sinh(x))CS(6,R cosh(x))CS(7,R tanh(x))CS(-5,R asinh(x))CS(-6,R acosh(x))CS(-7,R atanh(x))}}

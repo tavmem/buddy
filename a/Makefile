@@ -1,7 +1,7 @@
 PREFIX= /usr/local
 CFLAGS= -g -DATW_VERSION -I../
 PRODFLAGS = -O3 #-pg -g3
-LIB=libatw.a
+LIB=libbud.a
 DEVFLAGS = -O0 -g3 -DDEBUG -Wunused -Wreturn-type -Wimplicit-int #-Wall
 
 OS := $(shell uname -s | tr "[:upper:]" "[:lower:]")
@@ -9,25 +9,30 @@ OS := $(shell uname -s | tr "[:upper:]" "[:lower:]")
 
 CFLAGS += -pthread
 
-OBJS= main.o m.o y.o u.o p.o r.o k.o f.o s.o o.o n.o i.o q.o j.o b.o nsf.o z.o
+OBJS= main.o m.o y.o u.o p.o r.o k.o f.o s.o o.o n.o i.o q.o j.o b.o nsf.o z.o \
+	../dap/argsfirst.o ../dap/argsgetopt.o ../dap/error.o ../dap/args_data.o \
+	../dap/brealloc.o ../dap/bfree.o ../dap/balloc.o ../dap/buffalloc.o \
+	../dap/argsnext.o ../dap/buffputlong.o ../dap/buffstuff.o ../dap/buffroom.o \
+	../dap/ultohex.o ../dap/ultodec.o
+
 LDFLAGS = -lm -ldl
 
-all: atw
+all: bud
 
 lib: $(LIB)
 
 $(LIB): $(OBJS)
 	$(AR) crv $@ $(OBJS)
 
-atw: CFLAGS += $(PRODFLAGS)
-atw: $(OBJS) 
+bud: CFLAGS += $(PRODFLAGS)
+bud: $(OBJS) 
 	$(CC) ${CFLAGS} $^ -o $@ $(LDFLAGS)
 
 install:
-	install atw $(PREFIX)/bin/atw
+	install bud $(PREFIX)/bin/bud
 
 clean:
-	$(RM) -r atw *.exe  a/*.o
+	$(RM) -r bud *.exe  a/*.o
 
 TAGS: *.c *.h
 	etags *.[ch]

@@ -224,7 +224,7 @@ A ep_alldep(a) A a;
   if (0==(l=v->l)) R (A)gz();
   pb=buffalloc();
   for (l=v->l;l;l=(I*)*l) {
-    buffputint(pb,l); count++;
+    buffputlong(pb,l); count++;
   }
   lvec=(I **)(pb->min);
 /* buffstuff(pb,l+1,sizeof(I)*(count=*l)); */
@@ -234,7 +234,7 @@ A ep_alldep(a) A a;
     for(l=xv->l;l;l=(I*)*l) {
       for(j=0,notin=1;notin && j<count;++j) if(lvec[j][1]==l[1]) notin=0;
       if (notin) {
-        buffputint(pb,l); count++;
+        buffputlong(pb,l); count++;
         lvec=(I **) (pb->min);
       }
     }
@@ -380,7 +380,7 @@ A ep_gsv(aname) A aname;
 
   switch(lu(name,SysVarList)) {
     CS(1, R (A)gi(dymeVal));
-    CS(2, R verGet());
+    CS(2, R versGet());
     CS(3, R (A)gi(atoi(Fs+3))); /* pp */
     CS(4, R gsym(APL?"apl":"ascii")); /* mode */
     CS(5, R (A)gi(sq)); /* stop */
@@ -416,7 +416,7 @@ A ep_gsv(aname) A aname;
 #define FtItCHK(aval,maxint) \
  if (1!=aval->n) ERROUT(ERR_LENGTH); \
  if (Ft==aval->t) \
-    ival=(((double)maxint)<(*(F *)(aval->p)))?maxint:irint(*(F *)(aval->p)); \
+    ival=(((double)maxint)<(*(F *)(aval->p)))?maxint:(int)rint(*(F *)(aval->p)); \
  else if (It==aval->t) ival=*aval->p; \
  else ERROUT(ERR_TYPE); \
  if (0>ival) ERROUT(ERR_DOMAIN);
@@ -426,7 +426,7 @@ A ep_gsv(aname) A aname;
                        if (1!=aval->n) ERROUT(ERR_LENGTH); \
                        if (0>(ival=*aval->p)) ERROUT(ERR_DOMAIN);
 
-#define RtCHK(aval,range) ItCHK(aval); if(range<ival)IRROUT(ERR_DOMAIN);
+#define RtCHK(aval,range) ItCHK(aval); if(range<ival)ERROUT(ERR_DOMAIN);
 
 #define NmCHK(aval) if ((cval=getname(aval))==(C *)0) ERROUT(ERR_TYPE);
 
@@ -478,7 +478,7 @@ A ep_wa(a) A a;
 #ifdef _AIX
     if (Ft==a->t) k=*I)nearest(*(F *)(a->p)); else k=*a->p;
 #else
-    if (Ft==a->t) k=irint(*(F *)(a->p)); else k=*a->p;
+    if (Ft==a->t) k=(I)rint(*(F *)(a->p)); else k=*a->p;
 #endif
     if (-1 > k) ERROUT(ERR_DOMAIN);
     if (k>0) R gi(!tmp(k<<20));

@@ -60,94 +60,6 @@ C **argv;
        for (;;) getm();                            /* main loop */
 }
 
-Z I argfirst(argc,argv){R 0;}
-
-typedef void (*VPF) ();
-Z FILE *_Warnfp = (FILE *)2;
-Z void _DefaultWarnFunc(char *s){
-  fputs(s, _Warnfp);
-  /* Lexa redefines fflush in stdio.h which results in an unresolved symbol */
-  #if defined(__edgfe) && defined(fflush)
-  #undef fflush
-  #endif
-  fflush(_Warnfp);}
-static VPF _WarnFunc = _DefaultWarnFunc;
-#define	MAXERRSIZE	BUFSIZ
-
-Z C *fixit(int errnum, char *s, char r[])
-{
-  char *z, *p = r, *cp = s, *str, ctimebuf[60];
-  //static struct timeval tp;
-  //static struct timezone tzp;
-
-  while (cp && *cp != (char) NULL) {
-    if (p == &r[MAXERRSIZE - 1])
-      return ("bark!\n");
-    if (*cp == '%')
-      switch (*(cp + 1)) {
-
-	/* quoted `%' */
-      case '%':
-	*p++ = *cp++;
-	*p++ = *cp++;
-	break;
-
-	/* error string a la syslog(3) */
-      case 'm':
-	if (errnum < 1 || errnum > sys_nerr)
-	  str = "unknown error";
-	else
-#ifdef HAVE_STRERROR
-          str = strerror(errnum);
-#else
-	  str = sys_errlist[errnum];
-#endif
-	for (z = str; *z != (char) NULL &&
-	     p < &r[MAXERRSIZE - 1]; *p++ = *z++);
-	cp += 2;
-	break;
-
-    
-	/* timestamp */
-//     case 't':
-//	if (gettimeofday(&tp, &tzp) < 0)
-//	  str = "(time?) ";
-//	else {
-//         #if defined(__SUNPRO_C)
-//          str = ctime_r(&tp.tv_sec,ctimebuf,sizeof(ctimebuf));
-//         #else
-//          /* For linux ctimebuf must be at least 26 */
-//          str = ctime_r(&tp.tv_sec,ctimebuf);
-//        #endif
-//	  str[19] = '\0';
-//	}
-    
-
-	for (z = str + 4; *z != (char) NULL &&
-	     p < &r[MAXERRSIZE - 1]; *p++ = *z++);
-	cp += 2;
-	break;
-
-	/* normal for _doprnt */
-      default:
-	*p++ = *cp++;
-	break;
-      }
-    else
-      *p++ = *cp++;
-  }
-  *p = (char) NULL;
-  return (r);
-}
-
-void Warn(char *fmt,...){char r[MAXERRSIZE];char _ErrBuf[2 * MAXERRSIZE];
- if(_WarnFunc != (VPF) NULL) { int errnum = errno;va_list ap;
- fmt=(C*)fixit(errnum, fmt,r);
- //va_start(ap, fmt);
- (void)vsprintf(_ErrBuf, fmt, ap);
- //va_end(ap);
- (_WarnFunc) (_ErrBuf); }R;}
-
 Z I parseargs(argc, argv)
 register I argc;
 register C *argv[];
@@ -159,13 +71,13 @@ register C *argv[];
        C *ep;                   /* points to end of option argument */
        C *cp;
 
-       if (argfirst(argc, argv) != 0)
+       if (argsfirst(argc, argv) != 0)
        {
               Warn("%t usage: argument list is empty\n");
               isinvalid = 1;
        }
 
-       while ((c = arggetopt(argc, argv, optlist)) != -1)
+       while ((c = argsgetopt(argc, argv, optlist)) != -1)
        {
               switch (c)
               {
@@ -219,6 +131,7 @@ register I c;
 }
 
 Z A get(x,s)C *s;{A r=(A)gsv(x,s);r->r=1;R r;}
+Z A gst(I x,C* s){A r=(A)gsv(x,s);r->r=1;return r;}
 void argvInstall(argc, argv, offset)
 I argc;
 C **argv;
@@ -229,7 +142,7 @@ I offset;
   if (argc < offset) { argv += argc; argc = 0; }
   else { argv += offset; argc -= offset; }
   aobj = gv(Et, argc);
-  while (argc--) aobj->p[i++] = Iget(0, *argv++);
+  while (argc--) aobj->p[i++] = (I)gst(0, *argv++);
   v = vi(si("_argv"), Rx);
   if (v->a) dc(v->a);
   v->a = (I)aobj; v->t=0;

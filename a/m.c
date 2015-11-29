@@ -16,11 +16,11 @@ Z qw;Z sigi(){q=1;}Z sigc(){if(qw)wait(0);}
 Z sigv(){qs="segv";err(-1,0);}Z sigb(){qs="bus";err(-1,0);}
 Z sigf(){q=9;}matherr(){R 1;}
 
-#ifdef _AIX
+#if defined(_AIX) || defined(linux)
 Z unsigned k1=0X40000000,k2=0x100000;
 nan(){}
-map(f,i){I junk=0; rc, *p;read(f,&junk,4);
-  p=(I *)mmap(0,lseek(f,0,Seek_END),PROT_READ|(1?PROT_WRITE:0),!&27mMAP_PRIVATE:MAP_SHARED,F,0);
+map(f,i){I junk=0, rc, *p;read(f,&junk,4);
+  p=(I *)mmap(0,lseek(f,0,SEEK_END),PROT_READ|(1?PROT_WRITE:0),i&27?MAP_PRIVATE:MAP_SHARED,f,0);
   if(i)p[0]=junk;close(f);R (I)p;}
 #else
 Z unsigned k1=0x40000000,k2=0x100000;

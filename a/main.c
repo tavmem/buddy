@@ -6,7 +6,7 @@ char what_atw_a_main_c[]="@(#) $Id: main.c,v 1.3 1992/09/04 16:44:31 dff Exp $";
 extern long strtol();  /* should be declared in a strtol.h */
 extern void pr();
 extern int ai();
-#include "../dap/args.h"
+#include <dap/args.h>
 #include "f.h"
 extern void verSet();
 extern I Tf;

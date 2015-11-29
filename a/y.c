@@ -43,7 +43,7 @@ loadafile(s,u) C *s;{         /* now a cover for doloadafile */
  if (0==rc)R perr(s);else free((void *) rc);
  R 0;}
 
-ai(n){sgi();wi();wi();if(!tmp(n<<20))R 0;yInstall();nsfInstall();R 1;}
+ai(n){sgi();mi();wi();if(!tmp(n<<20))R 0;yInstall();nsfInstall();R 1;}
 mpi(s,i)C *s;{I z;C *t;Q(!s||i<0||i<2||!(t=mfi(s,i&1)),9)
  ERR(t,z=open(t,i&1?O_RDWR:O_RDONLY))R nmap(z,i);}
 Z pw(f,s,n)C *s;{I t;do t=write(f,s,n);while(s+=t,t!=-1&&(n-=t));fsync(f);R t;} /* IBM write fix */
@@ -70,7 +70,7 @@ H1(ri){I0;{A z;struct a b;I d=*a->p,t;
 Z vf(a,b,i)C *a,*b;{A z;V v;I f,t;FILE g,*h;
  if(!isal(*a)||!b)R H("incorrect\n");v=vi(si(a),Cx);switch(i){
  case 3:if(h=popen(b,"w"))g=*stdout,*stdout=*h,pa(gt(v)),NL,*h=*stdout,pclose(h),*stdout=g;else perr("pipe?");R;
- case 2:if(!QA(z=(A)v->a)||!z||!mo(b,z))R H("can't write%s\n",a);}dc(v->a),v->a=m1(b,1);} 
+ case 2:if(!QA(z=(A)v->a)||!z||!mo(b,z))R H("can't write%s\n",a);}dc(v->a),v->a=mi(b,1);} 
 Z lst(n,s)C *s;{I i;CX x=*s?cx(s):Cx;V v;
  for(i=0;i<x->ht->nb;++i)for(v=x->ht->b[i];v;v=v->v)
  if(-1==n&&v->e||v->t==n&&v->a)pv(v);NL;}

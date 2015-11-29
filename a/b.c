@@ -3,7 +3,7 @@ char what_a_b_c[] = "@(#) $Id: b.c,v 1.19 1992/12/03 20:47:01 atw Exp $";
 #ifdef ATW_VERSION
 
 #include "k.h"
-I MZ[31]={1};Z I *MM[31];m1(){MZ[7]=MZ[13]=MZ[19]=MZ[25]=2;DO(30,MZ[i+1]+=MZ[i]*2)}
+I MZ[31]={1};Z I *MM[31];mi(){MZ[7]=MZ[13]=MZ[19]=MZ[25]=2;DO(30,MZ[i+1]+=MZ[i]*2)}
 Z mmr(n,i){if(i<18)i=18;R err(2,n),tmp((MZ[i]+2)<<2),1;} /* Dan MZ[i+1]? */
 C *mab(m)unsigned m;{I *p,*r,i=2,n=m;for(n=(n+3)>>4;n;n>>=1)++i;
  do{if(p=MM[i])R MM[i]=(I*)*p,(C*)p;for(n=i;n<30;)if(p=MM[++n]){

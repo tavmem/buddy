@@ -43,7 +43,7 @@ loadafile(s,u) C *s;{         /* now a cover for doloadafile */
  if (0==rc)R perr(s);else free((void *) rc);
  R 0;}
 
-ai(n){sgi();mi();wi();if(!tmp(n<<20))R 0;yInstall();nsfInstall();R 1;}
+ai(n){sgi();mi();wi();if(!tmp(n<<20))R 0;ki();yInstall();nsfInstall();R 1;}
 mpi(s,i)C *s;{I z;C *t;Q(!s||i<0||i<2||!(t=mfi(s,i&1)),9)
  ERR(t,z=open(t,i&1?O_RDWR:O_RDONLY))R nmap(z,i);}
 Z pw(f,s,n)C *s;{I t;do t=write(f,s,n);while(s+=t,t!=-1&&(n-=t));fsync(f);R t;} /* IBM write fix */

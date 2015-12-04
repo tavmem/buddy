@@ -35,7 +35,7 @@ ty(a){I t;if(!QL(a))R QA(a)?0:QV(a)?(t=XV(a)->t,t==5?1:t):a==MN(8)?3:a==MN(9)?2:
 Z me(n,f,a,b,c){E e=mm(n+2);e->n=n,e->f=f,*e->a=a;if(n>1)e->a[1]=b;if(n>2)e->a[2]=c;
  R QP(a)&&(f==MN(8)&&QA(b)||f==MN(9)&&a!=MP(74))?(a=ee(e),*r=a,ef(ME(e)),a):ME(e);}
 Z mr(){R *t&&*t!=';'&&*t!=')'&&*t!=']'&&*t!='}'&&*t!=ELSE;}
-Z rt(g){I f,a,b,c=0;if(!mf())prr(4);switch(f= *t++){
+Z rt(g){I f,a,b,c=0;if(!mr())prr(4);switch(f= *t++){
  case MN(5):case MN(3):CS(MN(2),*++K=U(f);u=u;if(a=rt(0),q)prr(3);b=mr()?re():nl;
   if(*t==ELSE){u=++t;*K=1;c=re();}--K;R me(c?3:2,f,a,b,c))
  CS('[',prr(6))CS('(',--t;a=rl(MN(7)))CS('{',--t;a=rl(MN(1)))

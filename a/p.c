@@ -70,7 +70,7 @@ H1(mth){A z;XA;P p;C *s=at?Fs:" %d",*d;I j=0,k,m=0,n,l;if(at==Ct)R ic(a);
  p.i=a->p;n=ar?ad[--ar]:1;
  if(ar)DO(an,BRK if(at){l=mfmt(b,s,p.f[i]);k=bd();if(k>j)j=k;k=l-k;}
                  else   k=SH(p.i[i]);if(k>m)m=k)
- else DO(an,BRK m+-at?mfmt(b,s,p.f[i]):SH(p.i[i]))
+ else DO(an,BRK m+=at?mfmt(b,s,p.f[i]):SH(p.i[i]))
  m+=j;W(ga(Ct,ar+1,ar?an*m:m,ad))z->d[ar]=ar?m*n:m;zr(z);d=(C*)z->p;
  if(ar)DO(an,at?(mfmt(b,s,*p.f++),h(d+j-bd())):h(d+m-SH(*p.i++));d+=m)
  else DO(an,k=at?mfmt(b,s,*p.f++):SH(*p.i++);h(d);d+=k) R(I)z;}

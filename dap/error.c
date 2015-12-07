@@ -7,6 +7,7 @@
 /*****************************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>
 #if defined(__cplusplus)
 #include <strings.h>
 #else
@@ -162,7 +163,7 @@ Abort(char *fmt,...)
   else
     _DefaultWarnFunc(_ErrBuf);
   abort();
-  _exit(1);
+  _Exit(1);
 }
 
 void

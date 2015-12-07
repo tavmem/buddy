@@ -10,6 +10,7 @@
 /* header file inclusions */
 #include <dap/balloc.h>
 #include <dap/buff.h>
+#include <strings.h>
 
 /* external function definitions */
 void 

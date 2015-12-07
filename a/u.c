@@ -1,6 +1,8 @@
 char what_a_u_c[] = "@(#) $Id: uc.,v 1.52 1993/04/24 00:57:58 maus Exp $";
 #include "s.h"
 #include <setjmp.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*strings not equal */
 #define strneq(a,b) (*(a)!=*(b)||strcmp((a),(b))!=0)

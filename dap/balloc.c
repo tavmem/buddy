@@ -8,7 +8,7 @@
 /* contributed by Daniel F. Fisher */
 
 /* header file inclusions */
-#if defined(__NetBSD__) || defined(__FreeBSD) || defined (__APPLE__)
+#if defined(__NetBSD__) || defined(__FreeBSD) || defined (__APPLE__) || defined (linux)
 #include <stdlib.h>
 #else
 #include <malloc.h>
@@ -37,7 +37,7 @@ balloc(int size)
     if (errno == ENOMEM) {
       /* GASP!!!! */
       gasp(size);
-      _exit(1);
+      _Exit(1);
     }
     Abort("%t %s(): abort: malloc(%u): %m\n", fnc, (unsigned) size);
   }

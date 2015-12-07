@@ -7,6 +7,8 @@
 /*****************************************************************************/
 /* contributed by Daniel F. Fisher */
 
+#include <stdlib.h>
+
 /* external function definitions */
 void 
 bfree(char *p)

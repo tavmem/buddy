@@ -41,7 +41,7 @@ brealloc(char *p, int size)
     if (errno == ENOMEM) {
       /* GASP!!!! */
       gasp(p0, size);
-      _exit(1);
+      _Exit(1);
     }
     Abort("%t %s(): abort: realloc(%u): %m\n", fnc, (unsigned) size);
   }

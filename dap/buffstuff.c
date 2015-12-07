@@ -10,6 +10,7 @@
 /* header file inclusions */
 #include <a/development.h>
 #include <dap/buff.h>
+#include <strings.h>
 
 /* external function definitions */
 void 

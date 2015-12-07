@@ -47,7 +47,7 @@ A SymbolTableHashChainLengths()
 V sv(c,s)CX c;S s;{C *t=index(s->n,'.'),b[99];
  if(t)*t=0,strcpy(b,s->n),*t='.',c=cxi(si(b)),s=si(t+1);R vi(s,c);}
 Z ispu(c){R c==':'||c==';'||c=='('||c==')'||c=='{'||c=='}'||c=='['||c==']';}
-A issp(c){R c==' '||c=='\n'||c=='\t'||c==12;}isal(c){R c>='a'&&c<='z'||c>='A'&&c<='Z'||c=='_';}
+Z issp(c){R c==' '||c=='\n'||c=='\t'||c==12;}isal(c){R c>='a'&&c<='z'||c>='A'&&c<='Z'||c=='_';}
 isdi(c){R c>='0'&&c<='9';}Z isan(c){R isal(c)||isdi(c);}
 Z std(s,d)C **s;F *d;{C *r=*s;I i='\242'==*r||!APL&&'-'==*r,j;r+=i;
  j=strncmp(r,"Inf",3)||isal(r[3]);if(j&&!isdi(r['.'==*r]))R 0;

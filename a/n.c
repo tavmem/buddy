@@ -2,6 +2,7 @@ char what_a_n_c[] = "@(#) $Id: n.c,v 1.36 1993/04/24 00:56:56 maus Exp $";
 #include "f.h"
 #include "x.h"
 #include <stdio.h>
+#include <string.h>
 #include <malloc.h>
 #include <sys/time.h>
 #include <sys/resource.h>

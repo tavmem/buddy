@@ -5,6 +5,7 @@
 
 /* @(#) $Id: k.h,v 1.31 1993/04/01 22:31:20 jmb Exp $ */
 
+#include <stdio.h>
 #include "u.h"
 
 #define MAXR 9

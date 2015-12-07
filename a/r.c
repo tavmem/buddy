@@ -1,6 +1,8 @@
 char what_a_r_c[] = "@(#) $Id: r.c,v 1.68 1993/04/23 20:38:21 maus Exp $";
 #include "k.h"
 #include <dap/balloc.h>
+#include <malloc.h>
+#include <strings.h>
 extern I Df;Z rl(),re();Z I *t;Z y,*u,*r,Qs;Z vl(a){E e;R QL(a)||QV(a);}
 Z cvl(a){R vl(a)||QE(a)&&XE(a)->f==MP(74);}
 Z pvl(a){E e;R cvl(a)||QE(a)&&(e=XE(a),e->n==2&&e->f==MP(36)&&cvl(e->a[1]));}
@@ -71,7 +73,7 @@ Z str(t,r,b,n,p)I *t,*b,*p;{I f;if(f=t[-1]==')'&&t[-3]==';')--t;
 Z rz(b)I *b;{I i;A f;for(r=t=b;*r;++r)if(QS(*r))*r=(i=lk(*r,Qs?Qs:*X))?i:
  MV(vi(XS(*r),Cx)); R re();}
 extern V sv();
-f0(s){A a=(A)sv(Cx,si(s))->e;if(a)H("%x\n",a->p[a->n=1]);}
+f0(s){A a=(A)sv(Cx,si(s))->e;if(a)H("%s\n",a->p[a->n=1]);}
 f1(s){I *l=sv(Cx,si(s))->l;for(;l;l=(I*)*l)H("%s ",((V)l[1])->s->n);NL;}
 Z app(a,k)A a;{DO(a->n,if(a->p[i]==k)R)a->p[a->n]=k;a->n=++*a->d;}
 Z mrg(a,w)A a,w;{A z;I n=a->n;if(w&&w->t==Et&&w->n)w=(A)*w->p;if(!w||qz(w))R(I)nl;

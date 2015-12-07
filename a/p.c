@@ -1,6 +1,7 @@
 char what_a_p_c[] = "@(#) $Id: p.c,v 1.32 1993/04/22 20:22:38 maus Exp $";
 
 #include <math.h>
+#include <string.h>
 #include "s.h"
 #include "fir.h"
 #undef min

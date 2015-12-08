@@ -21,7 +21,7 @@ I *mz(){Z I b[31];I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
 
 /* Buddy System Plus - A modification of the usual power
  * of two buddy system, which adds "leap" units to various
- * memory allocation sizes tin order to minimize the likelyhood 
+ * memory allocation sizes in order to minimize the likelyhood 
  * of either cache collisions and/or TLB collisions between
  * different memory cells.  The various parameters used in these
  * procedures depend critically on the memory configuration
@@ -81,7 +81,7 @@ static u_long zp_rs6000[MD] =
 static long *zm_rs6000 = (long *)(0xd0000000);
 
 /* 0   1    2   3   4   5   6   7   8    9   a   b   c   d   e   f */
-/* 6 workds every page */
+/* 6 works every page */
 /* 1 page every 128 pages (8k pages) */
 static u_long zp_Series5[MD] =
 {  0,  0,   0,  0,  0,  0,  0,  0,  0,   0,  0,  6,  0,  0,  0,  0,

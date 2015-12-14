@@ -120,7 +120,7 @@ rf(s,f)C *s;{if(s)*++K=MV(s=scp(s)),*++K=-1;
 tf(){I r=f1(0)?0:go();if(!r)pr();R r;}
 ui(){CX c=Cx;if(*X){A f=(A)*X;Cx=(CX)f->p[f->n+2];}for(*++K=0,++u,pr();!tf(););R Cx=c,--u,--K,0;}
 
-Z C *es[]={"sotp","interrupt","wsfull","stack","value","valence","type","rand",
+Z C *es[]={"stop","interrupt","wsfull","stack","value","valence","type","rand",
  "length","domain","index","mismatch","nonce","maxrank","non-function","parse","maxitems","invalid"};
 xrr(){if(q>0)qs=es[q];q=0;}
 Z prr(i,a)A a;{q=0;i==2?H("%d",a):pa(QA(a)&&a&&a->t>=Xt?*a->d:(I)a);H(": %s\n",i<0?qs:es[i]);}

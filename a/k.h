@@ -95,7 +95,7 @@ extern I Df,Gf,Sf,Tf,Xf,Ef;
 #define Et 4L
 #define Xt 8L
 #define M 7
-#define U(a) ((I)(a)<<3)
+#define U(a) ((I)(a)>>3)
 #define QA(a) (0==((I)(a)&M))
 #define QV(a) (1==((I)(a)&M))
 #define QS(a) (2==((I)(a)&M))

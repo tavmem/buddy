@@ -7,6 +7,24 @@ coding style used by Arthur Whitney.
 Note that this version is 32-bit, and dates from 4/30/1993.
 A 64-bit version was not released as open source til 3/27/2008.
 
+Why is this relevant?
+
+1) "Notation as a tool of thought."  (Ken Iverson)
+Arthur Whitney is a talented implementor of language interpreters, eg.,
+his own version of Scheme, a port of IPSA APL to limited hardware, A+,
+k, KSQL, q, and KDB+.  The notation he uses is key to that success.
+
+2) The study of Domain specific languages:  Ostensibly Arthur uses C.
+Actually, he uses the C preprocessor to create a his own language.
+I call it ATWC.
+
+3) Mastery of q/KDB+:  A study of ATWC directly carries over to q/KDB+.
+The style of using very short functions is key to successful q/KDB+.
+Supposedly, Arthur never bothered to learn GDB (or other debugging tools
+normally used with C).  You would not use such tools with q/KDB+ either.
+
+4) Code as Poetry.  Read, study, and enjoy.
+
 -------------------------------------------------------------------------
 
 A+ and the A+ Reference Manual are Copyright Morgan Stanley Dean Witter &

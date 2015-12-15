@@ -14,7 +14,7 @@ Arthur Whitney is a talented implementor of language interpreters, eg.,
 his own version of Scheme, a port of IPSA APL to limited hardware, A+,
 k, KSQL, q, and KDB+.  The notation he uses is key to that success.
 
-2) The study of Domain specific languages:  Ostensibly Arthur uses C.
+2) The study of Domain Specific Languages:  Ostensibly Arthur uses C.
 Actually, he uses the C preprocessor to create a his own language.
 I call it ATWC.
 
@@ -22,8 +22,12 @@ I call it ATWC.
 The style of using very short functions is key to successful q/KDB+.
 Supposedly, Arthur never bothered to learn GDB (or other debugging tools
 normally used with C).  You would not use such tools with q/KDB+ either.
+Comments are sparse (or nonexistent).
 
 4) Code as Poetry.  Read, study, and enjoy.
+An extreme example is file a/b.c.  It conatins 2 versions of the buddy
+memory allocation system.  The first is in 11 lines of ATWC.
+The second is in well documented traditional C (almost 750 lines).
 
 -------------------------------------------------------------------------
 

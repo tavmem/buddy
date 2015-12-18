@@ -90,7 +90,7 @@ Z upd(x,d,i,p,r)A p;{I b[2],f=QV(x),a,*z,g=i==MP(22);V v=f?XV(x):(V)(X+U(x));
     if(Sf&&v->rff)v->z=2,dc(af4(v->rff,v->rfc,d,i,p,v));
     val(v);}
   if(v->o)xup(v,d,i,p,r);R 1;}
-set(x,a){I r;R *--Y=a,*--Y=0,*--Y=0;r=upd(x,a,0,0,0),dc(Y[2]),Y+=3,r;}
+set(x,a){I r;R *--Y=a,*--Y=0,*--Y=0,r=upd(x,a,0,0,0),dc(Y[2]),Y+=3,r;}
 aset(v,d,i,p){I r;Y-=3,*Y=i?ic(i):0,r=upd(MV(v),Y[2]=d,i,p,0);dc(Y[2]),dc(*Y),Y+=3;R xrr(),r;}
 Z lst(n,p,w)I *p;A w;{Q(w->r>1,7)Q(w->r&&w->n!=n,8)
  DO(n,if(!set(p[i],pck(i*w->r,w)))R 0)DO(n,if(QV(p[i]))XV(p[i])->z=1)R 1;}

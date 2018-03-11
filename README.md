@@ -29,6 +29,13 @@ An extreme example is file a/b.c.  It conatins 2 versions of the buddy
 memory allocation system.  The first is in 11 lines of ATWC.
 The second is in well documented traditional C (almost 750 lines).
 
+Why doesn't the code successfully compile?
+
+Again, I think that is has to do with file a/b.c.  Arthur's version
+of the buddy memory allocation system was tuned to Solaris on Sun 
+workstattions. It would need to be rewritten to work with Linux on
+Intel processors.
+
 -------------------------------------------------------------------------
 
 A+ and the A+ Reference Manual are Copyright Morgan Stanley Dean Witter &

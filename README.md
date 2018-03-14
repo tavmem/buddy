@@ -31,9 +31,9 @@ The second is in well documented traditional C (almost 750 lines).
 
 Why does the code compile on a 32-bit Linux, but not work? (See issues)
 
-Again, I think that is has to do with file a/b.c.  Both versions of 
-the code in a/b.c are tuned for Solaris on Sun workstattions. The code
-neeeds modification to work with Linux on Intel processors.
+Again, it may have to do with file a/b.c.  Both versions of the code in
+a/b.c are tuned for Solaris on Sun workstattions. The code may
+neeed modification to work with Linux on Intel processors.
 
 -------------------------------------------------------------------------
 

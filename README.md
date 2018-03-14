@@ -31,10 +31,9 @@ The second is in well documented traditional C (almost 750 lines).
 
 Why does the code compile on a 32-bit Linux, but not run?
 
-Again, I think that is has to do with file a/b.c.  Arthur's version
-of the buddy memory allocation system was tuned to Solaris on Sun 
-workstattions. It would need to be rewritten to work with Linux on
-Intel processors.
+Again, I think that is has to do with file a/b.c.  Both versions of 
+the code in a/b.c are tuned for Solaris on Sun workstattions. The code
+neeeds modification to work with Linux on Intel processors.
 
 -------------------------------------------------------------------------
 

@@ -21,7 +21,7 @@ I *mz(){Z I b[31];I *p;DO(31,for(b[i]=0,p=MM[i];p;p=(I*)*p)++b[i])R b;}
 
 /* Buddy System Plus - A modification of the usual power
  * of two buddy system, which adds "leap" units to various
- * memory allocation sizes in order to minimize the likelyhood 
+ * memory allocation sizes in order to minimize the likelyhood
  * of either cache collisions and/or TLB collisions between
  * different memory cells.  The various parameters used in these
  * procedures depend critically on the memory configuration
@@ -216,7 +216,7 @@ u_long w;       /* number of words to allocate from low base */
          * populate a range that extends from the current value of h
          * down to the high end of the range being considered.  After
          * we have populated all of these ranges, we populate the range
-         * from the final h value down to l, if there is one.  The new 
+         * from the final h value down to l, if there is one.  The new
          * value of h at each step is the low value of the range for
          * that step.
          */
@@ -272,7 +272,7 @@ u_long w;       /* number of words to allocate from low base */
         /* now i indexes the first range that was altered */
         if (i >= j)
         {
-                /* There was at least on affected range */ 
+                /* There was at least on affected range */
                 rl[j] = xl;
                 rh[j] = xh;
                 if (i > j)
@@ -309,14 +309,14 @@ u_long w;       /* number of words required */
          * zero.  This tells us the level block it would occupy
          * in an ordinary buddy system.  Under buddy system plus,
          * blocks at a given level are enlarged.  So after w shift
-         * to approximately locat the size, we then search down
+         * to approximately locate the size, we then search down
          * levels until we find the best fitting level.  This
          * will usually only go a few levels, usually zero, sometimes
          * 1 and almost never 2.
          */
         for (z = w >> 1, i = 1; z != 0; z >>= 1, i++);
         /* Instead of doing the following, we assume that the extra size
-         * intorduced by the plus parts does not exceed the size of the
+         * introduced by the plus parts does not exceed the size of the
          * original buddy system size.  This allows us to check i - 1,
          * in case it fits there.
          *
@@ -375,8 +375,8 @@ long *p;       /* pointer block being feed */
 {
         /* We really need to check that the block we are handed
          * starts at a 4 byte boundary and that the head 4 bytes
-         * contain reaonable information.  If theis is not the case,
-         * we could either lose the memory or we coutl implement
+         * contain reaonable information.  If this is not the case,
+         * we could either lose the memory or we could implement
          * a scheme that attempts to repair things.  All this will
          * be left for later.
          */
@@ -442,7 +442,7 @@ u_long mc()
                                if (((hdr >> 24) & 0xff) ==2)
                                {
                                        /* coalescent buddy, remove from this list
-                                        * and incrment the levle of either it or its buddy
+                                        * and incrment the level of either it or its buddy
                                         * depending on which is the low buddy.
                                         */
                                        /* remove from this free list */
@@ -568,7 +568,7 @@ u_long xh;      /* cell number of high addr in continguous range */
          * high pieces fits and we will be done condidering the low part.
          */
         /* There is an assumption made here that the sizes are well
-         * behaved in the sense that (zw[0] == 1) and that for all 
+         * behaved in the sense that (zw[0] == 1) and that for all
          * i in [1, MD - 1]: (4 * zw[i - 1] > zw[i] >= 2 * zw[i - 1])
          */
         u_long b;
@@ -609,11 +609,11 @@ u_long xh;      /* cell number of high addr in continguous range */
 
         if (m < h)
         {
-                /* There is a high part, lts break it up.  If l >= m - zq[i],
+                /* There is a high part, lets break it up.  If l >= m - zq[i],
                  * there is no low part, so high part will adjoin what
                  * ever falls below it.  In such cases, we make xl0 equal
                  * to xl.  Otherwise, the high part is not contiguous with
-                 * whtat comes below so xl0 is set to where the high part
+                 * what comes below so xl0 is set to where the high part
                  * begins, at m.
                  */
                 u_long xl0 = (l >= m - zq[i]) ? xl : m;
@@ -769,4 +769,3 @@ u_long xh;      /* high end of contiguous block */
 }
 
 #endif
-        

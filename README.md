@@ -15,7 +15,7 @@ his own version of Scheme, a port of IPSA APL to limited hardware, A+,
 k, KSQL, q, and KDB+.  The notation he uses is key to that success.
 
 2) The study of Domain Specific Languages:  Ostensibly Arthur uses C.
-Actually, he uses the C preprocessor to create a his own language.
+Actually, he uses the C preprocessor to create his own language.
 I call it ATWC.
 
 3) Mastery of q/KDB+:  A study of ATWC directly carries over to q/KDB+.

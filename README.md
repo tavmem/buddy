@@ -35,7 +35,9 @@ Why does the code compile on a 32-bit Linux, but not work? (See issues)
 
 Again, it may have to do with file a/b.c.  Both versions of the code in
 a/b.c are tuned for Solaris on Sun workstattions. The code may
-neeed modification to work with Linux on Intel processors.
+neeed modification to work with Linux on Intel processors.  Another strong
+possibility is that there are typos that remain (see partial fix to
+issue 3).  This entire repository was keyed in from source documents.
 
 -------------------------------------------------------------------------
 

@@ -1,11 +1,11 @@
-The focus of this repository is on the earlist version that we could
-find of the interpreter portion of the A+ system distributed by 
-Morgan Stanley.  In particular, it shows the buddy space management
-system that was eliminated in later versions, and shows more of the
-coding style used by Arthur Whitney.
+The focus of this repository is the version of the interpreter
+portion of the A+ system distributed by Morgan Stanley that
+existed when Arthur Whitney left MS.  In particular, it shows
+the buddy space management system that was eliminated in later
+versions, and shows more of the coding style used by Arthur.
 
 Note that this version is 32-bit, and dates from 4/30/1993.
-A 64-bit version was not released as open source til 3/27/2008.
+An open source 64-bit version was not released til 3/27/2008.
 
 Why is this relevant?
 

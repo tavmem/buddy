@@ -26,9 +26,10 @@ normally used with C).  You would not use such tools with q/KDB+ either.
 Comments are sparse (or nonexistent).
 
 4) Code as Poetry.  Read, study, and enjoy.
-An extreme example is file a/b.c.  It conatins 2 versions of the buddy
-memory allocation system.  The first is in 11 lines of ATWC.
-The second is in well documented traditional C (almost 750 lines).
+An extreme example of contrasting styles is contained in file a/b.c.
+There are 2 versions of the buddy memory allocation system.  The first
+is in 11 lines of ATWC.  The second is in well documented traditional
+C (almost 750 lines).
 
 Why does the code compile on a 32-bit Linux, but not work? (See issues)
 

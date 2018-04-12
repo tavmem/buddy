@@ -72,7 +72,7 @@ extern "C" I Df,Gf,Sf,Tf,Xf,Ef;
 extern "C" A nl;
 extern "C" I aset( V v_, A d_, A i_, A p_ );
 extern "C" A af4( A, A, A, A, A, V );
-extern "C" A gt( V v );
+extern "C" A gt( V v_ );
 extern "C" A un( A *p );
 
 #else

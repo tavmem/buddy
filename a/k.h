@@ -32,7 +32,7 @@ extern "C" int install(PFI f,C *s,I t,I n,I t0,I t1,I t2,I t3,I t4,I t5,I t6,I t
 extern "C" V vi(S s,CX cx);
 extern "C" CX cxi(S s);
 extern "C" S si(C *n);
-extern "C" CX cx*(C *s);
+extern "C" CX cx(C *s);
 extern "C" A ga(I t;I r,I n,I *d);
 extern "C" A gs(I t);
 extern "C" A gv(I t,I n);

@@ -45,7 +45,7 @@ extern "C" A gd(I t,A a);
 extern "C" A gc(I t,I r,I n,I *d,I *p);
 extern "C" int gz( void );
 
-extern "C" A grc(A av_, int r_, intc_); 
+extern "C" A grc(A av_, int r_, int c_);
 
 extern "C" C *qs;
 extern "C" C *tst(I t,I *d,I j,I *s,I k,I n);
@@ -66,8 +66,8 @@ extern "C" I *tm(I n);
 extern "C" void tf ( void );
 extern "C" I *ma(I n);
 extern "C" void mf(I *);
-//extern "C" I tr(I r,I *d);
-extern "C" APL,*Y,*X,*K,*J,sq,q(*g)();
+extern "C" I *tr(I r,I *d);
+extern "C" I APL,*Y,*X,*K,*J,sq,q,(*g)();
 extern "C" I Df,Gf,Sf,Tf,Xf,Ef;
 extern "C" A nl;
 extern "C" I aset( V v_, A d_, A i_, A p_ );
@@ -80,8 +80,8 @@ extern CX Rx,Cx;
 extern V vi();
 extern CX cxi(), cx();
 extern C *qs,*tst(),*tmv(),*trp(),*zer();
-extern A ci(),ep_cf(),ga(),gv(),gs(),gc(),dg(),gi(),gf(),gm(),ld1(),un();
-extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*K,*J,sq,q,(*g)(),Itm(),*ma(),nl;    // *k,tr()
+extern A ci(),ep_cf(),ga(),gv(),gs(),gc(),gd(),gi(),gf(),gm(),ld1(),un();
+extern I gsv(),ev(),ee(),fa(),APL,*Y,*X,*K,*J,sq,q,(*g)(),*tm(),*ma(),tr(),nl;
 extern I Df,Gf,Sf,Tf,Xf,Ef;
 #endif
 

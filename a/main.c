@@ -8,7 +8,7 @@ extern void pr();
 extern int ai();
 #include <dap/args.h>
 #include "f.h"
-extern void verSet();
+extern void versSet();
 extern I Tf;
 
 /* internal macro declarations */

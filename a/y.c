@@ -61,7 +61,7 @@ Z fzr(f,n){I j=getpagesize(),k=lseek(f,0,2);n=((n+j-1)/j)*j;
 Z items(n,z){C *s=cs(z);Z struct a a;I f,t,m,j,w=n!=-1;Q(!s,9)
  ERR(s,f=open(fi(s,"m"),w?O_RDWR:O_RDONLY))ERR(s,read(f,&a,AH))Q(!a.r,7)
  m=*a.d;j=a.i;if(m>j)j=m;if(w){t=a.t;if(n==-2)fzr(f,AH+T(a.n)+(t==Ct));else{
-  a.i-n,m=n*tr(a.r-1,a.d+1);if(n<*a.d)*a.d=n,a.n=m;lseek(f,0,0);
+  a.i=n,m=n*tr(a.r-1,a.d+1);if(n<*a.d)*a.d=n,a.n=m;lseek(f,0,0);
   ERR(s,write(f,&a,AH))ERR(s,flen(f,AH+T(m)+(t==Ct)))}}R close(f),j;}
 Z rd(f,s,n)C *s;{C *t=s+n;I k;for(;s<t;s+=k)PERR("",k=read(f,s,n))R 1;}
 H1(ri){I0;{A z;struct a b;I d=*a->p,t;

@@ -113,14 +113,3 @@ Z mrg(e){R *--Y=0,*--Y=0,e=mr0(e),dc(*Y++),dc(*Y++),e;}
 xis(e)E e;{I n=e->n-1,a=*e->a,w=e->a[n];EV(w)if(!n)_longjmp(J,w);
  for(*--Y=w;!(!QE(a)?set(a,ic(w)):(e=XE(a),e->f==MN(7))?lst(e->n,e->a,w)
   :peak(e->f)?pea(e,w):mrg(e));)err(q,MN(0));R *Y++;}
-Z e0(e,a)E e;{I *r=e->a+e->n-1;A z=gd(It,a);I t=*r;
- DO(z->n,z->p[i]=i)R *r=(I)z,a=ez(ME(e)),dc(z),*r=t,a;}
-Z xli(e)E e;{A z;I n=e->n-1;W(gv(Et,n));*--Y=zr(z);for(;n--;)z->p[n]=ev(e->a[n+1]);R ++Y,(I)z;}
-Z S ss(x){a a=(A)ev(x);R dc(a),!a->r&&sym(a)?XS(*a->p):0;}
-Z mr0(e)E e;{I y,f=e->f,n,r=0;A a;if(f!=MP(36)&&f!=MP(74)){n=e->n-1;
-  if(QE(y=f==MX(0)?*e->a:e->a[n])&&(r=XE(y)->f==MP(22)))y=*XE(y)->a;
-  *Y=f==MP(20)?ev(*e->a):f!=MX(0)?(r=1,ME(e)):n==1?ev(e->a[1]):xli(e);
-  if(QE(y))e=XE(y),f=e->f;}
- if(f==MP(36))if(y=e->a[1],Y[1]=ev(*e->a),QE(y=e->a[1]))e=XE(y),f=e->f;
- if(f==MP(74)){S s=ss(e->a[n=e->n-1]),c=n?ss(*e->a):0;Q(!s||n&&!c,9)
-  y=MV(sv(n?cxi(c):Cx,s));} R upd(y,Y[2],*Y,Y[1],r);}

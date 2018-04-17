@@ -1,5 +1,6 @@
 char what_a_k_c[] = "@(#) $Id: k.c,v 1.67 1993/04/30 00:54:13 atw Exp $";
 #include "f.h"
+I gt(V v);               //This line is not in the source docs
 Z I MY[2001];Z struct _cx rx;CX Rx,Cx;I Xf;
 I nl,sq=2,q,(*g)(),*Y,*X,*XY,*K=MY;
 extern HT hti();

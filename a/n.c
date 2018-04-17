@@ -7,10 +7,10 @@ char what_a_n_c[] = "@(#) $Id: n.c,v 1.36 1993/04/24 00:56:56 maus Exp $";
 #include <sys/time.h>
 #include <sys/resource.h>
 typedef struct{I u,s,e;}B;Z B t0;Z A ta;Z tn,td[2]={0,4},**tp,tj;Z e0;
-Z tr(t)struct timeval t;{R t.tv_sec*1000+10*(t.tv_usec/10000);}
+Z tvl(t)struct timeval t;{R t.tv_sec*1000+10*(t.tv_usec/10000);}  //in source docs, func "tvl" was named "tr"
 Z B ti(){Z struct rusage r;Z struct timeval tp;Z struct timezone tzp;B t;
  gettimeofday(&tp,&tzp),getrusage(RUSAGE_SELF,&r);
- R t.u=tr(r.ru_utime),t.s=tr(r.ru_stime),t.e=tr(tp)-e0,t;}
+ R t.u=tvl(r.ru_utime),t.s=tvl(r.ru_stime),t.e=tvl(tp)-e0,t;}
 te(){e0=ti().e;}
 Z B tz(x,y)B x,y;{B t;R t.u=x.u-y.u,t.s=x.s-y.s,t.e=x.e-y.e,t;}
 Z tw(z,t)B *z,t;{z->u+=t.u,z->s+=t.s,z->e+=t.e;}

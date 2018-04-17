@@ -1,6 +1,6 @@
 PREFIX= /usr/local
-CFLAGS= -g -DATW_VERSION -I../
-PRODFLAGS = -O3 -m32 #-pg -g3
+CFLAGS= -g -m32 -DATW_VERSION -I../
+PRODFLAGS = -O3 #-pg -g3
 LIB=libbud.a
 DEVFLAGS = -O0 -g3 -DDEBUG -Wunused -Wreturn-type -Wimplicit-int #-Wall
 

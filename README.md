@@ -13,31 +13,33 @@ Why is this relevant?
 1) "Notation as a tool of thought" (Ken Iverson).
 Arthur Whitney is a talented implementor of computer languages, eg.,
 a version of Scheme, a port of IPSA APL to limited hardware, A+,
-k, KSQL, q, and KDB+.  The notation he uses is significant.
+k, KSQL, q, KDB+, and shakti.  The notation he uses is significant.
 
 2) The study of Domain Specific Languages:  Ostensibly Arthur uses C.
 Actually, he uses the C preprocessor to create a terse language of his
-own.  I call it ATWC.
+own.  The style is referred to as the "ATW_VERSION" in the file a/b.c.
 
-3) Mastery of q/KDB+:  A study of ATWC directly carries over to q/KDB+.
-The style of using very short functions is helpful in successful q/KDB+.
-Supposedly, Arthur never bothered to learn GDB (or other debugging tools
-normally used with C).  You would not use such tools with q/KDB+ either.
-Comments are sparse (or nonexistent).
+3) A study of ATW-C directly carries over to k, q/KDB+, or shakti.
+The style of using very short functions is helpful.  Supposedly, 
+Arthur never bothered to learn GDB (or other debugging tools
+normally used with C).  You would not use such tools with q/KDB+ 
+either. Comments are sparse (or nonexistent).
 
 4) Code as Poetry.  Read, study, and enjoy.
 An extreme example of contrasting styles is contained in file a/b.c.
-There are 2 versions of the buddy memory allocation system.  The first
-is in 11 lines of ATWC.  The second is in well documented traditional
-C (almost 750 lines).
+There are 2 versions of the buddy memory allocation system.  The 
+"ATW_VERSION" has 11 lines.  The second is in well documented 
+traditional C (almost 750 lines).
 
 Why does the code compile on a 32-bit Linux, but not work? (See issues)
 
-Again, it may have to do with file a/b.c.  Both versions of the code in
-a/b.c are tuned for Solaris on Sun workstattions. The code may
-neeed modification to work with Linux on Intel processors.  Another strong
-possibility is that there are typos that remain (see partial fix to
-issue 3).  This entire repository was keyed in from source documents.
+Again, it may have to do with file a/b.c.  The traditional C version in 
+a/b.c has a comment stating that "these procedures depend critically on
+the memory configuration of the computer performing these procedures".
+The code in a/b.c is tuned for Solaris on Sun workstattions. It undoubtedly
+needs modification to work with Linux or Windows or macOS on Intel processors.
+Another strong possibility is that there are typos that remain (see partial
+fix to issue 3).  This entire repository was keyed in from source documents.
 
 -------------------------------------------------------------------------
 
